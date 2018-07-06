@@ -1,0 +1,170 @@
+{
+  "basics": {
+    "name": "Claudiu Nicola",
+    "label": "Software developer",
+    "picture": "https://avatars2.githubusercontent.com/u/15197275?s=460&v=4",
+    "email": "claudiunicola96@gmail.com",
+    "phone": "",
+    "website": "claudiunicola.xyz",
+    "summary": "://php dev ://js newbie ://open-source believer ://founder #clujytech",
+    "location": {
+      "address": "",
+      "postalCode": "",
+      "city": "Cluj-Napoca",
+      "countryCode": "RO",
+      "region": "Cluj"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "claudiunicolaa",
+        "url": "https://github.com/claudiunicolaa"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "claudiugnicola",
+        "url": "www.linkedin.com/in/claudiugnicola"
+      },
+      {
+        "network": "Twitter",
+        "username": "claudiunicolaa",
+        "url": "https://twitter.com/claudiunicola"
+      }
+    ]
+  },
+  "work": [
+    {
+      "company": "Babes-Bolyai University",
+      "position": "Mentor @ UBB IT Hub",
+      "website": "http://ubbithub.csubb.ro/",
+      "startDate": "2018-03-01",
+      "endDate": "",
+      "summary": "Our main purpose it is the digitalization of the academic and administrative processes within Babes-Bolyai University.",
+      "highlights": []
+    },
+    {
+      "company": "Evozon",
+      "position": "PHP Developer",
+      "website": "https://www.evozon.com/",
+      "startDate": "2016-05-09",
+      "endDate": "",
+      "summary": "Evozon is a software development and consulting company with almost 500 specialists at our headquarters in Cluj-Napoca Romania. With the support of business-focused people in London, San Francisco, New York, Phoenix, Sweden, Austria and Japan we can be where you need us most. We use Agile, CI, and LEAN methodologies to create the highest quality solutions that your customers will love.",
+      "highlights": [
+        "Build web platforms using Laravel 5.x",
+        "Prototyping and implementing web services (REST API)",
+        "Build e-commerce platforms using Magento 1.x"
+      ]
+    },
+    {
+      "company": "Evozon",
+      "position": "Mentee",
+      "website": "https://www.evozon.com/",
+      "startDate": "2015-10-19",
+      "endDate": "2016-05-06",
+      "summary": "Getting started with Magento 1.x concepts. I build a custom module for Magento 1.9",
+      "highlights": []
+    },
+    {
+      "company": "Evozon",
+      "position": "PHP Internship",
+      "website": "https://www.evozon.com/",
+      "startDate": "2015-08-17",
+      "endDate": "2015-10-16",
+      "summary": "Two months of PHP training. I learned the basics of web development, OOP, data structures, design patterns, coding standards.",
+      "highlights": []
+    }
+  ],
+  "volunteer": [
+    {
+      "organization": "Cluj Y.Tech",
+      "position": "Founder",
+      "website": "https://cluj-ytech.github.io/",
+      "startDate": "2017-01-01",
+      "endDate": "",
+      "summary": "Cluj Y.Tech is a community of young techies, studying in Cluj. We feel responsible for our own trajectory so for that, we study and practice software development in school plus on our own free time. We believe that we should absorb all the knowledge we can from University, but there are more knowledge, experience, and ideas out there. Cluj is a vibrant city and we should take advantage of being here! And for that, we think we can do more if we stand united!",
+      "highlights": []
+    }
+  ],
+  "education": [
+    {
+      "institution": "Babes-Bolyai University",
+      "area": "Computer Science",
+      "studyType": "Bachelor",
+      "startDate": "2015-10-01",
+      "endDate": "2018-07-08",
+      "gpa": "",
+      "courses": []
+    }
+  ],
+  "awards": [
+    {
+      "title": "Entrepreneurship Nights",
+      "date": "2017-12-09",
+      "awarder": "SAS UBB",
+      "summary": ""
+    }
+  ],
+  "publications": [
+    {
+      "name": "",
+      "publisher": "",
+      "releaseDate": "",
+      "website": "",
+      "summary": ""
+    }
+  ],
+  "skills": [
+    {
+      "name": "Web development",
+      "level": "Master",
+      "keywords": [
+        "PHP",
+        "Laravel",
+        "REST API",
+        "RabbitMQ",
+        "MySQL",
+        "Javascript"
+      ]
+    },
+    {
+      "name": "Linux",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Docker",
+      "level": "Advanced",
+      "keywords": []
+    }
+  ],
+  "languages": [
+    {
+      "language": "Romanian",
+      "fluency": "Native speaker"
+    },
+    {
+      "language": "English",
+      "fluency": "Elementary proficiency"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Public speaking",
+      "keywords": []
+    },
+    {
+      "name": "Entrepreneurship",
+      "keywords": []
+    },
+    {
+      "name": "Project Management",
+      "keywords": []
+    }
+  ],
+  "references": [
+    {
+      "name": "",
+      "reference": ""
+    }
+  ]
+}

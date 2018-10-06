@@ -38,7 +38,7 @@
       "position": "Mentor @ UBB IT Hub",
       "website": "http://ubbithub.csubb.ro/",
       "startDate": "2018-03-01",
-      "endDate": "",
+      "endDate": "2018-09-01",
       "summary": "Our main purpose it is the digitalization of the academic and administrative processes within Babes-Bolyai University.",
       "highlights": []
     },
@@ -48,7 +48,7 @@
       "website": "https://www.evozon.com/",
       "startDate": "2016-05-09",
       "endDate": "",
-      "summary": "Evozon is a software development and consulting company with almost 500 specialists at our headquarters in Cluj-Napoca Romania. With the support of business-focused people in London, San Francisco, New York, Phoenix, Sweden, Austria and Japan we can be where you need us most. We use Agile, CI, and LEAN methodologies to create the highest quality solutions that your customers will love.",
+      "summary": "Evozon is a software development and consulting company with almost 500 specialists at our headquarters in Cluj-Napoca Romania. With the support of business-focused people in London, San Francisco, New York, Phoenix, Sweden, Austria, and Japan we can be where you need us most. We use Agile, CI, and LEAN methodologies to create the highest quality solutions that your customers will love.",
       "highlights": [
         "Build web platforms using Laravel 5.x",
         "Prototyping and implementing web services (REST API)",
@@ -94,6 +94,17 @@
       "endDate": "2018-07-08",
       "gpa": "",
       "courses": []
+    },
+    {
+      "institution": "Babes-Bolyai University",
+      "area": "Science, Technology and Innovation in Public Governance",
+      "studyType": "Master Degee",
+      "startDate": "2018-10-01",
+      "endDate": "",
+      "gpa": "",
+      "courses": [
+        "Strategic Planning, Research Methods for Process Analysis, ICT Innovation in Governance, Building Performance in Public Services: Emergency Response System, Legislative Debates regarding innovation and technology"
+      ]
     }
   ],
   "awards": [
@@ -101,7 +112,13 @@
       "title": "Entrepreneurship Nights",
       "date": "2017-12-09",
       "awarder": "SAS UBB",
-      "summary": ""
+      "summary": "1st place - Best business idea."
+    },
+    {
+      "title": "Transylvania Tech Talent Contest",
+      "date": "2018-03-31",
+      "awarder": "MA Science, Technology and Innovation in Public Governance",
+      "summary": "4rd place"
     }
   ],
   "publications": [
@@ -148,6 +165,10 @@
     }
   ],
   "interests": [
+    {
+      "name": "Web Development",
+      "keywords": []
+    },
     {
       "name": "Public speaking",
       "keywords": []

@@ -137,21 +137,15 @@
       "keywords": [
         "PHP",
         "Laravel",
+        "Symfony",
         "REST API",
         "RabbitMQ",
         "MySQL",
-        "Javascript"
+        "Javascript",
+        "MongoDB",
+        "Unix",
+        "Docker"
       ]
-    },
-    {
-      "name": "Linux",
-      "level": "",
-      "keywords": []
-    },
-    {
-      "name": "Docker",
-      "level": "Advanced",
-      "keywords": []
     }
   ],
   "languages": [

@@ -34,6 +34,17 @@
   },
   "work": [
     {
+      "company": "WeSupply",
+      "position": "Backend Developer",
+      "website": "https://labs.wesupply.xyz/",
+      "startDate": "2019-04-22",
+      "endDate": "",
+      "summary": "SaaS",
+      "highlights": [
+        "PHP7, MongoDB"
+      ]
+    },
+    {
       "company": "Babes-Bolyai University",
       "position": "Mentor @ UBB IT Hub",
       "website": "http://ubbithub.csubb.ro/",
@@ -47,11 +58,12 @@
       "position": "PHP Developer",
       "website": "https://www.evozon.com/",
       "startDate": "2016-05-09",
-      "endDate": "",
+      "endDate": "2019-04-19",
       "summary": "Evozon is a software development and consulting company with almost 500 specialists at our headquarters in Cluj-Napoca Romania. With the support of business-focused people in London, San Francisco, New York, Phoenix, Sweden, Austria, and Japan we can be where you need us most. We use Agile, CI, and LEAN methodologies to create the highest quality solutions that your customers will love.",
       "highlights": [
+        "Build REST API solutions using Symfony 3",
         "Build web platforms using Laravel 5.x",
-        "Prototyping and implementing web services (REST API)",
+        "Prototyping web services (REST API)",
         "Build e-commerce platforms using Magento 1.x"
       ]
     },
@@ -144,7 +156,8 @@
         "Javascript",
         "MongoDB",
         "Unix",
-        "Docker"
+        "Docker",
+        "Go"
       ]
     }
   ],

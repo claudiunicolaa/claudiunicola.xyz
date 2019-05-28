@@ -1,11 +1,11 @@
 {
   "basics": {
     "name": "Claudiu Nicola",
-    "label": "Software developer",
-    "picture": "https://avatars2.githubusercontent.com/u/15197275?s=460&v=4",
+    "label": "Software Engineer",
+    "picture": "profile.jpg",
     "email": "claudiunicola96@gmail.com",
     "phone": "",
-    "website": "claudiunicola.xyz",
+    "website": "https://claudiunicola.xyz",
     "summary": "://php dev ://js newbie ://open-source believer ://founder #clujytech",
     "location": {
       "address": "",
@@ -23,7 +23,7 @@
       {
         "network": "LinkedIn",
         "username": "claudiugnicola",
-        "url": "www.linkedin.com/in/claudiugnicola"
+        "url": "https://www.linkedin.com/in/claudiugnicola"
       },
       {
         "network": "Twitter",
@@ -33,6 +33,20 @@
     ]
   },
   "work": [
+    {
+      "company": "WeSupply Labs",
+      "position": "Software Engineer",
+      "website": "https://labs.wesupply.xyz/",
+      "startDate": "2019-04-22",
+      "endDate": "",
+      "summary": "WeSupply it is a Software as a Service built on PHP and MongoDB pillars. Effortless Omni-Channel package tracking, estimates delivery, returns, and analytics.",
+      "highlights": [
+        "PHP7",
+        "MongoDB",
+        "Unit Tests (PHPUnit)",
+        "Continous Integration"
+      ]
+    },
     {
       "company": "Babes-Bolyai University",
       "position": "Mentor @ UBB IT Hub",
@@ -47,11 +61,12 @@
       "position": "PHP Developer",
       "website": "https://www.evozon.com/",
       "startDate": "2016-05-09",
-      "endDate": "",
+      "endDate": "2019-04-19",
       "summary": "Evozon is a software development and consulting company with almost 500 specialists at our headquarters in Cluj-Napoca Romania. With the support of business-focused people in London, San Francisco, New York, Phoenix, Sweden, Austria, and Japan we can be where you need us most. We use Agile, CI, and LEAN methodologies to create the highest quality solutions that your customers will love.",
       "highlights": [
+        "Build REST API solutions using Symfony 3.4",
         "Build web platforms using Laravel 5.x",
-        "Prototyping and implementing web services (REST API)",
+        "Prototyping web services (REST API)",
         "Build e-commerce platforms using Magento 1.x"
       ]
     },
@@ -141,10 +156,12 @@
         "REST API",
         "RabbitMQ",
         "MySQL",
+        "SQL",
         "Javascript",
         "MongoDB",
         "Unix",
-        "Docker"
+        "Docker",
+        "Go"
       ]
     }
   ],

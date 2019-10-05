@@ -34,14 +34,25 @@
   },
   "work": [
     {
+      "company": "Comply Advantage",
+      "position": "Software Engineer",
+      "website": "https://complyadvantage.com/",
+      "startDate": "2019-10-07",
+      "endDate": "",
+      "summary": "",
+      "highlights": [
+      ]
+    },
+    {
       "company": "WeSupply Labs",
       "position": "Software Engineer",
       "website": "https://labs.wesupply.xyz/",
       "startDate": "2019-04-22",
-      "endDate": "",
+      "endDate": "2019-09-27",
       "summary": "WeSupply it is a Software as a Service built on PHP and MongoDB pillars. Effortless Omni-Channel package tracking, estimates delivery, returns, and analytics.",
       "highlights": [
-        "PHP7",
+        "PHP 7",
+        "NodeJS",
         "MongoDB",
         "Unit Tests (PHPUnit)",
         "Continous Integration"

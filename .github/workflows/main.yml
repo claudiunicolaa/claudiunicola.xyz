@@ -16,5 +16,5 @@ jobs:
 
     - name: Install jsonresume and generate
       run: |
-        npm install jsonresume-theme-classy
+        npm install -g jsonresume-theme-classy
         resume export index.html --theme classy

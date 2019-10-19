@@ -1,0 +1,20 @@
+name: generate-index
+
+on: 
+  push:
+    branches:
+      - master
+    paths:
+      - resume.json
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/npm@master
+    
+    - name: Install jsonresume and generate
+      run: |
+        npm install jsonresume-theme-classy
+        resume export index.html --theme classy 

@@ -19,3 +19,18 @@ jobs:
         npm install resume-cli
         npm install jsonresume-theme-classy
         ./node_modules/.bin/resume export index.html --theme classy
+        
+    - name: Git push
+      env:
+        GIT_OWNER_EMAIL: ${{ secrets.GIT_OWNER_EMAIL }}
+        GIT_OWNER_NAME: ${{ secrets.GIT_OWNER_NAME }}
+        GIT_REMOTE_URL: ${{ secrets.GIT_REMOTE_URL }}
+      run: |
+        git config user.email "$GIT_OWNER_EMAIL"
+        git config user.name "$GIT_OWNER_NAME"
+        if [[ `git status --porcelain` ]]; then
+          git add index.html
+          git commit -a -m 'Updated index'
+          git remote rm origin
+          git remote add origin $GIT_REMOTE_URL
+          git push origin HEAD:master

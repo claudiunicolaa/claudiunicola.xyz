@@ -34,3 +34,4 @@ jobs:
           git remote rm origin
           git remote add origin $GIT_REMOTE_URL
           git push origin HEAD:master
+        fi

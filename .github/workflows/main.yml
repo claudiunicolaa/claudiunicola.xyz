@@ -28,7 +28,7 @@ jobs:
         # git config user.name "$GIT_OWNER_NAME"
         GIT_REMOTE_URL: ${{ secrets.GIT_REMOTE_URL }}
       run: |
-        echo $GIT_OWNER_EMAIL
+        echo ${GIT_OWNER_EMAIL}
         if [[ `git status --porcelain` ]]; then
           git add index.html
           git commit -a -m 'Updated index'

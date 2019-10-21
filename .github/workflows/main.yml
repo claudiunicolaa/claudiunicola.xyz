@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - master
-    # paths:
-      # - resume.json
+    paths:
+      - resume.json
 
 jobs:
   build:

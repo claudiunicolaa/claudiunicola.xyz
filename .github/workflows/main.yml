@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - uses: actions/npm@master
+    - uses: actions/setup-node@v1
 
     - name: Install resume-cli and generate the index
       run: |

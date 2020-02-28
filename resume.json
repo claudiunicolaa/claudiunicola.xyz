@@ -40,6 +40,13 @@
       "startDate": "2019-10-07",
       "summary": "",
       "highlights": [
+        "PHP 5, 7",
+        "Python 3",
+        "MongoDB",
+        "MySQL",
+        "AWS",
+        "GitLab CI/CD",
+        "Testing (unit, integration, e2e)"
       ]
     },
     {
@@ -159,18 +166,19 @@
       "name": "Web development",
       "level": "Master",
       "keywords": [
-        "PHP",
-        "Laravel",
-        "Symfony",
-        "REST API",
-        "RabbitMQ",
-        "MySQL",
-        "SQL",
-        "Javascript",
-        "MongoDB",
-        "Unix",
         "Docker",
-        "Go"
+        "Go",
+        "Javascript",
+        "Laravel",
+        "MongoDB",
+        "MySQL",
+        "PHP",
+        "Python",
+        "RabbitMQ",
+        "REST API",
+        "SQL",
+        "Symfony",
+        "Unix"
       ]
     }
   ],

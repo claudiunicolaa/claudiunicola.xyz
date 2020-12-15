@@ -39,15 +39,7 @@
       "website": "https://complyadvantage.com/",
       "startDate": "2019-10-07",
       "summary": "",
-      "highlights": [
-        "PHP 5, 7",
-        "Python 3",
-        "MongoDB",
-        "MySQL",
-        "AWS",
-        "GitLab CI/CD",
-        "Testing (unit, integration, e2e)"
-      ]
+      "highlights": []
     },
     {
       "company": "WeSupply Labs",

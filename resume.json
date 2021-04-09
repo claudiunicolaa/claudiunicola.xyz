@@ -8,11 +8,9 @@
     "website": "http://claudiunicola.xyz",
     "summary": "://software engineer ://open-source believer ://founder #clujytech",
     "location": {
-      "address": "",
-      "postalCode": "",
-      "city": "Cluj-Napoca",
-      "countryCode": "RO",
-      "region": "Cluj"
+      "city": "Remote",
+      "region": "CJ",
+      "countryCode": "RO"
     },
     "profiles": [
       {
@@ -38,7 +36,7 @@
       "position": "Software Engineer",
       "website": "https://complyadvantage.com/",
       "startDate": "2019-10-07",
-      "summary": "",
+      "summary": "Microservices, Customers integrations, OAuth2, E2E Testing, Serverless, AWS, Ambassador, \n Kafka, Kubernets, Docker, GitLab CI/CD, MongoDB, MySQL, Redis, Golang, PHP, Python, Terraform",
       "highlights": []
     },
     {
@@ -47,22 +45,7 @@
       "website": "https://labs.wesupply.xyz/",
       "startDate": "2019-04-22",
       "endDate": "2019-09-27",
-      "summary": "WeSupply it is a Software as a Service built on PHP and MongoDB pillars. Effortless Omni-Channel package tracking, estimates delivery, returns, and analytics.",
-      "highlights": [
-        "PHP 7",
-        "NodeJS",
-        "MongoDB",
-        "Unit Tests (PHPUnit)",
-        "Continous Integration"
-      ]
-    },
-    {
-      "company": "Babes-Bolyai University",
-      "position": "Mentor @ UBB IT Hub",
-      "website": "http://ubbithub.csubb.ro/",
-      "startDate": "2018-03-01",
-      "endDate": "2018-09-01",
-      "summary": "Our main purpose it is the digitalization of the academic and administrative processes within Babes-Bolyai University.",
+      "summary": "Rest API, E2E Testing, PHP, NodeJS, MongoDB, AngularJS",
       "highlights": []
     },
     {
@@ -71,13 +54,8 @@
       "website": "https://www.evozon.com/",
       "startDate": "2016-05-09",
       "endDate": "2019-04-19",
-      "summary": "Evozon is a software development and consulting company with almost 500 specialists at our headquarters in Cluj-Napoca Romania. With the support of business-focused people in London, San Francisco, New York, Phoenix, Sweden, Austria, and Japan we can be where you need us most. We use Agile, CI, and LEAN methodologies to create the highest quality solutions that your customers will love.",
-      "highlights": [
-        "Build REST API solutions using Symfony 3.4",
-        "Build web platforms using Laravel 5.x",
-        "Prototyping web services (REST API)",
-        "Build e-commerce platforms using Magento 1.x"
-      ]
+      "summary": "Rest API, Symfony 3.4, Laravel 5.4, Magento 1.9",
+      "highlights": []
     },
     {
       "company": "Evozon",
@@ -85,7 +63,7 @@
       "website": "https://www.evozon.com/",
       "startDate": "2015-10-19",
       "endDate": "2016-05-06",
-      "summary": "Getting started with Magento 1.x concepts. I build a custom module for Magento 1.9",
+      "summary": "Coding Standards, Data Structures, Design Patterns, OOP, Web Development",
       "highlights": []
     },
     {
@@ -94,11 +72,20 @@
       "website": "https://www.evozon.com/",
       "startDate": "2015-08-17",
       "endDate": "2015-10-16",
-      "summary": "Two months of PHP training. I learned the basics of web development, OOP, data structures, design patterns, coding standards.",
+      "summary": "Coding Standards, Data Structures, Design Patterns, OOP, Web Development",
       "highlights": []
     }
   ],
   "volunteer": [
+    {
+      "organization": "Babes-Bolyai University",
+      "position": "Mentor @ UBB IT Hub",
+      "website": "http://ubbithub.csubb.ro/",
+      "startDate": "2018-03-01",
+      "endDate": "2018-09-01",
+      "summary": "Improve the digitalization level of the academic and administrative processes within Babes-Bolyai University.",
+      "highlights": []
+    },
     {
       "organization": "Cluj Y.Tech",
       "position": "Founder",
@@ -155,22 +142,31 @@
   ],
   "skills": [
     {
-      "name": "Web development",
-      "level": "Master",
-      "keywords": [
+      "name": "Use in production",
+      "keywords":[
+        "Amazon Web Services",
+        "Cloud-Native",
         "Docker",
-        "Go",
-        "Javascript",
-        "Laravel",
+        "Golang",
+        "Kafka",
+        "Kubernetes",
+        "JavaScript",
         "MongoDB",
         "MySQL",
-        "PHP",
+        "Linux",
+        "PHP", 
         "Python",
         "RabbitMQ",
-        "REST API",
-        "SQL",
-        "Symfony",
-        "Unix"
+        "Redis",
+        "HTTP",
+        "Terraform"
+      ]
+    },
+    {
+      "name": "Side projects",
+      "keywords": [
+        "Blockchain",
+        "Rust"
       ]
     }
   ],
@@ -186,7 +182,7 @@
   ],
   "interests": [
     {
-      "name": "Web Development",
+      "name": "Software Engineering",
       "keywords": []
     },
     {

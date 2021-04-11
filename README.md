@@ -13,3 +13,7 @@ npm
 - install the theme `npm install jsonresume-theme-classy`
 - create JSON schema (http://registry.jsonresume.org/) and saved it locally as `resume.json`
 - run `resume export index.html --theme classy`
+
+
+### Deploy
+Run `./generate.sh`

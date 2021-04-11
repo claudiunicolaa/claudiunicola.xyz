@@ -18,7 +18,7 @@ jobs:
       run: |
         npm install resume-cli
         npm install jsonresume-theme-classy
-        ./node_modules/.bin/resume export index.html --theme classy
+        ./generate.sh 
 
     - name: Git push
       env:

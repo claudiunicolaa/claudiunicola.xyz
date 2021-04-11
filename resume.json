@@ -36,7 +36,7 @@
       "position": "Software Engineer",
       "website": "https://complyadvantage.com/",
       "startDate": "2019-10-07",
-      "summary": "Microservices, Customers integrations, OAuth2, E2E Testing, Serverless, AWS, Ambassador, \n Kafka, Kubernets, Docker, GitLab CI/CD, MongoDB, MySQL, Redis, Golang, PHP, Python, Terraform",
+      "summary": "Microservices, Customers integration, OAuth2, E2E Testing, Serverless, AWS, Ambassador, \n Kafka, Kubernets, Docker, GitLab CI/CD, MongoDB, MySQL, Redis, Golang, PHP, Python, Terraform",
       "highlights": []
     },
     {
@@ -142,10 +142,9 @@
   ],
   "skills": [
     {
-      "name": "Use in production",
+      "name": "Worked with",
       "keywords":[
-        "Amazon Web Services",
-        "Cloud-Native",
+        "AWS",
         "Docker",
         "Golang",
         "Kafka",
@@ -158,15 +157,7 @@
         "Python",
         "RabbitMQ",
         "Redis",
-        "HTTP",
         "Terraform"
-      ]
-    },
-    {
-      "name": "Side projects",
-      "keywords": [
-        "Blockchain",
-        "Rust"
       ]
     }
   ],

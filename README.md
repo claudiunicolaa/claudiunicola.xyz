@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b77be5a1-d3d5-4cc9-b65d-7535c4a7bd80/deploy-status)](https://app.netlify.com/sites/affectionate-knuth-e1e325/deploys)
+
 # claudiunicola.xyz
 
 Personal website created using https://jsonresume.org/. It uses `Classy`theme.

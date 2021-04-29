@@ -36,7 +36,7 @@
       "position": "Software Engineer",
       "website": "https://complyadvantage.com/",
       "startDate": "2019-10-07",
-      "summary": "Microservices, Customers integration, OAuth2, E2E Testing, Serverless, AWS, Ambassador, \n Kafka, Kubernets, Docker, GitLab CI/CD, MongoDB, MySQL, Redis, Golang, PHP, Python, Terraform",
+      "summary": "Microservices, Customers integration, OAuth2, E2E Testing, Serverless, AWS, Ambassador, Kafka, Kubernetes, Telemetry, Docker, GitLab CI/CD, MongoDB, MySQL, Redis, Golang, PHP, Python, Terraform",
       "highlights": []
     },
     {
@@ -45,7 +45,7 @@
       "website": "https://labs.wesupply.xyz/",
       "startDate": "2019-04-22",
       "endDate": "2019-09-27",
-      "summary": "Rest API, E2E Testing, PHP, NodeJS, MongoDB, AngularJS",
+      "summary": "Rest APIs, Customers integrations, E2E Testing, PHP, NodeJS, MongoDB, AngularJS",
       "highlights": []
     },
     {
@@ -54,7 +54,7 @@
       "website": "https://www.evozon.com/",
       "startDate": "2016-05-09",
       "endDate": "2019-04-19",
-      "summary": "Rest API, Symfony 3.4, Laravel 5.4, Magento 1.9",
+      "summary": "Rest APIs, Symfony 3.4, Laravel 5.4, MySQL",
       "highlights": []
     },
     {

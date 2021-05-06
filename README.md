@@ -18,4 +18,8 @@ npm
 
 
 ### Deploy
-Run `./generate.sh`
+Run `bash generate.sh`
+
+### Export as PDF
+
+Run `bash export_to_pdf.sh`

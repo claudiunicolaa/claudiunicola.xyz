@@ -1,7 +1,7 @@
 {
   "basics": {
     "name": "Claudiu Nicola",
-    "label": "Software Engineer",
+    "label": "Senior Software Engineer",
     "picture": "profile.jpg",
     "email": "claudiu.nicola@protonmail.com",
     "phone": "",
@@ -32,10 +32,19 @@
   },
   "work": [
     {
+      "company": "Around25",
+      "position": "Senior Software Engineer",
+      "website": "https://around25.com/",
+      "startDate": "2021-07-05",
+      "summary": "Part of a team that delivers scalable microservices-based solutions.",
+      "highlights": []
+    },
+    {
       "company": "ComplyAdvantage",
       "position": "Software Engineer",
       "website": "https://complyadvantage.com/",
       "startDate": "2019-10-07",
+      "endDate": "2021-06-30",
       "summary": "Microservices, Customers integration, OAuth2, E2E Testing, Serverless, AWS, Ambassador, Kafka, Kubernetes, Telemetry, Docker, GitLab CI/CD, MongoDB, MySQL, Redis, Golang, PHP, Python, Terraform",
       "highlights": []
     },

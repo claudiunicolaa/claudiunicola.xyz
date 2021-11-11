@@ -1,7 +1,7 @@
 {
   "basics": {
     "name": "Claudiu Nicola",
-    "label": "Software Engineer",
+    "label": "Senior Software Engineer",
     "picture": "profile.jpg",
     "email": "claudiu.nicola@protonmail.com",
     "phone": "",
@@ -33,7 +33,7 @@
   "work": [
     {
       "company": "Around25",
-      "position": "Software Engineer",
+      "position": "Senior Software Engineer",
       "website": "https://around25.com/",
       "startDate": "2021-07-05",
       "summary": "Part of a team that delivers scalable microservices-based solutions.",

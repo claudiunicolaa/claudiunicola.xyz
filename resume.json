@@ -25,22 +25,37 @@
       },
       {
         "network": "dev.to",
-        "username": "claudiunicolaa",
-        "url": "https://dev.to/claudiunicolaa"
+        "username": "clanic",
+        "url": "https://dev.to/clanic"
       },
       {
         "network": "Medium",
-        "username" "claudiunicolaa",
+        "username": "claudiunicolaa",
         "url": "https://medium.com/@claudiunicolaa"
       }
     ]
   },
   "work": [
     {
+      "company": "FluidTrends",
+      "position": "Senior Software Engineer",
+      "website": "https://fluidtrends.ch/",
+      "startDate": "2022-12-05",
+      "summary": "Working on scalable cloud-native solutions for a product focused on onboarding web2 users into the web3 ecosystem.",
+      "highlights": [
+        "Go (Golang), TypeScript",
+        "Docker, Kubernetes, GCP",
+        "MongoDB",
+        "Microservices, gRPC, GraphQL, CI/CD",
+        "Product, web3"
+      ]
+    },
+    {
       "company": "Around25",
       "position": "Senior Software Engineer",
       "website": "https://around25.com/",
       "startDate": "2021-07-05",
+      "endDate": "2023-06-05",
       "summary": "Part of a team that delivers scalable microservices-based solutions for a startup focused on Customer Journey experience. Key contributions included the rewritting of NodeJS services in Go (Golang), integrating Keycloak for Authentication and Authorization, System Design around event-based architecture for a better scalability, and delivering new features.",
       "highlights": [
         "Go (Golang), NodeJS, React",

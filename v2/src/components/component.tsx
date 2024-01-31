@@ -12,7 +12,7 @@ export function Component() {
       <section className="mb-10">
         <div className="flex space-x-4 items-center">
           <Avatar className="h-16 w-16">
-            <AvatarImage alt="Avatar" src="/placeholder-avatar.jpg" />
+            <AvatarImage alt="Avatar" src="/profile.jpg" />
             <AvatarFallback>SE</AvatarFallback>
           </Avatar>
           <div>
@@ -24,12 +24,20 @@ export function Component() {
       <section className="mb-10">
         <Card>
           <CardHeader>
-            <h2 className="text-2xl font-bold">Introduction</h2>
+            <h2 className="text-2xl font-bold">About me</h2>
           </CardHeader>
           <CardContent>
-            <p className="text-gray-500">
-              Experienced backend software engineer with a passion for developing efficient and scalable server-side
-              applications. Proficient in modern development languages and frameworks.
+            <p className="text-black-500 mb-4">
+              As a backend-focused professional, my expertise lies in building scalable and easy-to-maintain cloud-native software solutions.
+            </p>
+            <p className="text-black-500 mb-4">
+              Adhering to the 'You build it, you run it' philosophy, I ensure top-notch quality and accountability. While possessing a basic understanding of frontend elements, my main strength is in backend engineering, involving designing robust microservices and CI/CD processes.
+            </p>
+            <p className="text-black-500 mb-4">
+              My work has spanned industries, contributing to scalable solutions in Customer Journey and FinTech sectors, with a recent focus on onboarding web2 users into the web3 ecosystem. I also bring leadership experience, guiding small teams in collaborative environments to deliver innovative backend solutions.
+            </p>
+            <p className="text-black-500 mb-4">
+              Grounded in Computer Science and Public Governance, my background integrates technological innovation with strategic planning.
             </p>
           </CardContent>
         </Card>
@@ -42,14 +50,43 @@ export function Component() {
           <CardContent>
             <div className="space-y-4">
               <div>
-                <h3 className="text-xl font-semibold">Lead Backend Developer, XYZ Corp</h3>
-                <p className="text-gray-500">2018 - Present</p>
-                <p>Implemented backend services using Node.js and MongoDB, improving application performance by 20%.</p>
+                <h3 className="text-xl font-semibold">Senior Software Engineer, <a href="https://fluidtrends.ch/"><i>FluidTrends</i></a></h3>
+                <p className="text-gray-500">2022 - Present</p>
+                <p>Working on scalable cloud-native solutions for a product focused on onboarding web2 users into the web3 ecosystem.</p>
+                {/* list of highlights */}
+                <ul className="list-disc list-inside">
+                  <li>Go (Golang), TypeScript</li>
+                  <li>Docker, Kubernetes, GCP</li>
+                  <li>MongoDB</li>
+                  <li>Microservices, gRPC, GraphQL, CI/CD</li>
+                  <li>Product, Innovation, Web3</li>
+                </ul>
               </div>
               <div>
-                <h3 className="text-xl font-semibold">Software Engineer, ABC Inc</h3>
-                <p className="text-gray-500">2015 - 2018</p>
-                <p>Developed microservices in Java and Spring Boot, resulting in a more robust and scalable system.</p>
+                <h3 className="text-xl font-semibold">Senior Software Engineer, <a href="https://around25.com/"><i>Around25</i></a></h3>
+                <p className="text-gray-500">2021 - 2023</p>
+                <p>Part of a team that delivers scalable microservices-based solutions for a startup focused on Customer Journey experience. Key contributions included the rewritting of NodeJS services in Go (Golang), integrating Keycloak for Authentication and Authorization, System Design around event-based architecture for a better scalability, and delivering new features.</p>
+                <ul className="list-disc list-inside">
+                  <li>Go (Golang), NodeJS, React</li>
+                  <li>Docker, Docker Swarm, Traefik, Kubernetes, GCP, OVH</li>
+                  <li>Keycloak, NATS, Redis</li>
+                  <li>MySQL, PostgresSQL, MongoDB</li>
+                  <li>Microservices, REST APIs, CI/CD</li>
+                  <li>SaaS, Customer Journey</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold">Software Engineer, <a href="https://complyadvantage.com/"><i>ComplyAdvantage</i></a></h3>
+                <p className="text-gray-500">2019 - 2021</p>
+                <p>Individual contributor alongside the Platform&API team. The team was responsible for delivering APIs and user interfaces used by customers in a collaborative enviroment with DevOps mindset and focus on continuous integration and delivery. Key contributions included breaking down the monolithic application into microservices, implementing OAuth2 authentication and introducing event-driven architecture for scaling purposes. I was involved in all parts of the SDLC, from planning and defining software design documents for new product features to maintenance and scaling.</p>
+                <ul className="list-disc list-inside">
+                  <li>Python, PHP, Go (Golang), NodeJS</li>
+                  <li>Docker, Terraform, Ambassador, Kubernetes, AWS</li>
+                  <li>AWS Cognito integration, Kafka, Redis</li>
+                  <li>MySQL, MongoDB</li>
+                  <li>Microservices, REST APIs, Serverless, CI/CD, E2E Testing, Monitorning & Observability</li>
+                  <li>SaaS, FinTech</li>
+                </ul>
               </div>
             </div>
           </CardContent>
@@ -172,6 +209,6 @@ export function Component() {
           </CardContent>
         </Card>
       </section>
-    </main>
+    </main >
   )
 }

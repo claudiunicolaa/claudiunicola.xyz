@@ -34,9 +34,9 @@
         "url": "https://medium.com/@claudiunicolaa"
       },
       {
-   	"network": "Twitter",
-	"username": "clanic_x",
-	"url": "https://twitter.com/clanic_x"
+        "network": "Twitter",
+        "username": "clanic_x",
+        "url": "https://twitter.com/clanic_x"
       }
     ]
   },
@@ -108,7 +108,8 @@
       "summary": "Contributed to two major project, an e-commerce that operated on the US market and a Bank Loan Managent Solution used by the biggest bank from Romania.",
       "highlights": [
         "PHP, Javascript, Relation Databases, REST APIs, RabbitMQ, Redis",
-        "Magento 1.x, Symfony 3.4", "Laravel 5.x, ",
+        "Magento 1.x, Symfony 3.4",
+        "Laravel 5.x, ",
         "E-commerce, Banking"
       ]
     },
@@ -131,7 +132,7 @@
       "startDate": "2015-08-17",
       "endDate": "2015-10-16",
       "summary": "Three months focused on backend development using PHP and MySQL. The final project was a team effort that simulated a real team building a small e-commerce website.",
-      "highlights": [ 
+      "highlights": [
         "Data Structures, PHP basics, OOP, Coding Standards",
         "Design Patterns, MySQL, Software Development Life Cycle"
       ]
@@ -194,17 +195,38 @@
   ],
   "publications": [
     {
-      "name": "",
-      "publisher": "",
-      "releaseDate": "",
-      "website": "",
+      "name": "Using Private Go Modules with golangci-lint in GitHub Actions",
+      "publisher": "dev.to",
+      "releaseDate": "2024-01-05",
+      "website": "https://dev.to/clanic/using-private-go-modules-with-golangci-lint-in-github-actions-288j",
+      "summary": ""
+    },
+    {
+      "name": "NATS Message Deduplication in Go",
+      "publisher": "dev.to",
+      "releaseDate": "2023-04-29",
+      "website": "https://dev.to/clanic/effortless-nats-message-deduplication-in-go-2ohl",
+      "summary": ""
+    },
+    {
+      "name": "AWS Lambda Go logging middleware example",
+      "publisher": "dev.to",
+      "releaseDate": "2021-02-26",
+      "website": "https://dev.to/clanic/learning-golang-middlewares-23g3",
+      "summary": ""
+    },
+    {
+      "name": "selfTaught && findMentor",
+      "publisher": "Medium",
+      "releaseDate": "2017-12-11",
+      "website": "https://medium.com/@claudiunicolaa/selftaught-findmentor-e65cd5a232c2",
       "summary": ""
     }
   ],
   "skills": [
     {
       "name": "Worked with (alphabetically):",
-      "keywords":[
+      "keywords": [
         "Ambassador",
         "AWS",
         "AWS Cognito",
@@ -220,11 +242,11 @@
         "Microservices",
         "MongoDB",
         "Monitoring & Observability",
-        "NATS",        
+        "NATS",
         "NodeJS",
         "MySQL",
         "Linux",
-        "PHP", 
+        "PHP",
         "Python",
         "RabbitMQ",
         "Redis",
@@ -251,15 +273,19 @@
       "keywords": []
     },
     {
-      "name": "Public speaking",
+      "name": "Open Source",
       "keywords": []
     },
     {
-      "name": "Entrepreneurship",
+      "name": "Philosophy",
       "keywords": []
     },
     {
-      "name": "Project Management",
+      "name": "Psychology",
+      "keywords": []
+    },
+    {
+      "name": "Leadership",
       "keywords": []
     }
   ],

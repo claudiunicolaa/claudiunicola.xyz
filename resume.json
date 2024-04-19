@@ -160,15 +160,6 @@
   "education": [
     {
       "institution": "Babes-Bolyai University",
-      "area": "Computer Science",
-      "studyType": "Bachelor",
-      "startDate": "2015-10-01",
-      "endDate": "2018-07-08",
-      "gpa": "",
-      "courses": []
-    },
-    {
-      "institution": "Babes-Bolyai University",
       "area": "Science, Technology and Innovation in Public Governance",
       "studyType": "Master Degree",
       "startDate": "2018-10-01",
@@ -177,20 +168,29 @@
       "courses": [
         "Strategic Planning | Research Methods for Process Analysis | ICT Innovation in Governance | Building Performance in Public Services: Emergency Response System | Legislative Debates regarding innovation and technology | Participatory Governance | E-government | Sustainable urban development | Public budgets"
       ]
+    },
+    {
+      "institution": "Babes-Bolyai University",
+      "area": "Computer Science",
+      "studyType": "Bachelor",
+      "startDate": "2015-10-01",
+      "endDate": "2018-07-08",
+      "gpa": "",
+      "courses": []
     }
   ],
   "awards": [
-    {
-      "title": "Entrepreneurship Nights",
-      "date": "2017-12-09",
-      "awarder": "SAS UBB",
-      "summary": "1st place - Best business idea."
-    },
     {
       "title": "Transylvania Tech Talent Contest",
       "date": "2018-03-31",
       "awarder": "MA Science, Technology and Innovation in Public Governance",
       "summary": "4rd place"
+    },
+    {
+      "title": "Entrepreneurship Nights",
+      "date": "2017-12-09",
+      "awarder": "SAS UBB",
+      "summary": "1st place - Best business idea."
     }
   ],
   "publications": [

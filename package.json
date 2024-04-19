@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "generate-html": "resume export index.html --theme classy"
+  },
   "dependencies": {
     "jsonresume-theme-classy": "^1.0.9"
   }

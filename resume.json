@@ -6,7 +6,7 @@
     "email": "claudiu.nicola@protonmail.com",
     "phone": "",
     "website": "",
-    "summary": "As a backend-focused professional with 8+ years of experience, my expertise lies in building scalable and easy-to-maintain cloud-native software solutions. My work has spanned industries, contributing to scalable solutions in Customer Journey and FinTech sectors, with a recent focus on onboarding web2 users into the web3 ecosystem. Adhering to the 'You build it, you run it' philosophy, I ensure top-notch quality and accountability. While possessing a basic understanding of frontend elements, my main strength is in backend engineering, involving designing robust microservices and CI/CD processes. I also bring leadership experience, guiding small teams in collaborative environments to deliver innovative backend solutions. Grounded in Computer Science and Public Governance, my background integrates technological innovation with strategic planning.",
+    "summary": "As a backend-focused professional with 8+ years of experience, my expertise lies in building scalable and easy-to-maintain cloud-native software solutions. My work has spanned industries, contributing to scalable solutions in E-commerce, Banking, FinTech, Customer Experience and Entertainment, with a recent focus on onboarding web2 users into the web3 ecosystem. Adhering to the 'You build it, you run it' philosophy, I ensure top-notch quality and accountability. While possessing a basic understanding of frontend elements, my main strength is in backend engineering, involving designing robust microservices and CI/CD processes. I also bring leadership experience, guiding small teams in collaborative environments to deliver innovative backend solutions. Grounded in Computer Science and Public Governance, my background integrates technological innovation with strategic planning.",
     "location": {
       "city": "Remote",
       "region": "CJ",
@@ -43,9 +43,24 @@
   "work": [
     {
       "company": "FluidTrends",
+      "position": "Tech Lead Software Engineer",
+      "website": "https://fluidtrends.ch/",
+      "startDate": "2023-03-01",
+      "summary": "Working on scalable cloud-native solutions for a product focused on onboarding web2 users into the web3 ecosystem. Lead a small team and provide guidance and mentorship. Being in charge of the backend architecture, design, and product implementation.",
+      "highlights": [
+        "Go (Golang), TypeScript",
+        "Docker, Kubernetes, GCP",
+        "MongoDB",
+        "Microservices, gRPC, GraphQL, CI/CD",
+        "Product, web3"
+      ]
+    },
+    {
+      "company": "FluidTrends",
       "position": "Senior Software Engineer",
       "website": "https://fluidtrends.ch/",
       "startDate": "2022-12-05",
+      "endDate": "2023-03-01",
       "summary": "Working on scalable cloud-native solutions for a product focused on onboarding web2 users into the web3 ecosystem.",
       "highlights": [
         "Go (Golang), TypeScript",
@@ -57,18 +72,30 @@
     },
     {
       "company": "Around25",
+      "position": "Senior Software Engineer - Consultant",
+      "website": "https://around25.com/",
+      "startDate": "2022-12-05",
+      "endDate": "2023-06-05",
+      "summary": "Continue providing support for the team (few hours per month), in particular about Keycloak integration.",
+      "highlights": [
+        "Keycloak integration, CI/CD",
+        "SaaS, Customer Experience"
+      ]
+    },
+    {
+      "company": "Around25",
       "position": "Senior Software Engineer",
       "website": "https://around25.com/",
       "startDate": "2021-07-05",
-      "endDate": "2023-06-05",
-      "summary": "Part of a team that delivers scalable microservices-based solutions for a startup focused on Customer Journey experience. Key contributions included the rewritting of NodeJS services in Go (Golang), integrating Keycloak for Authentication and Authorization, System Design around event-based architecture for a better scalability, and delivering new features.",
+      "endDate": "2022-12-05",
+      "summary": "Part of a team that delivers scalable microservices-based solutions for a scale-up business focused on Customer Service services (chatbots). Key contributions included rewriting NodeJS services in Go (Golang), integrating Keycloak for Authentication and Authorization, System Design around event-based architecture for better scalability, and delivering new features.",
       "highlights": [
         "Go (Golang), NodeJS, React",
         "Docker, Traefik, Kubernetes, GCP, OVH",
         "Keycloak integration, NATS, Redis",
         "MySQL, PostgresSQL, MongoDB",
         "Microservices, REST APIs, CI/CD",
-        "SaaS, Customer Journey"
+        "SaaS, Customer Experience"
       ]
     },
     {

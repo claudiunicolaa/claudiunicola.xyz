@@ -13,313 +13,57 @@
       "countryCode": "RO"
     },
     "profiles": [
-      {
-        "network": "GitHub",
-        "username": "claudiunicolaa",
-        "url": "https://github.com/claudiunicolaa"
-      },
-      {
-        "network": "LinkedIn",
-        "username": "claudiugnicola",
-        "url": "https://www.linkedin.com/in/claudiugnicola"
-      },
-      {
-        "network": "dev.to",
-        "username": "clanic",
-        "url": "https://dev.to/clanic"
-      },
-      {
-        "network": "Medium",
-        "username": "claudiunicolaa",
-        "url": "https://medium.com/@claudiunicolaa"
-      },
-      {
-        "network": "Twitter",
-        "username": "clanic_x",
-        "url": "https://twitter.com/clanic_x"
-      }
+      {"network": "GitHub","username": "claudiunicolaa","url": "https://github.com/claudiunicolaa"},
+      {"network": "LinkedIn","username": "claudiugnicola","url": "https://www.linkedin.com/in/claudiugnicola"},
+      {"network": "dev.to","username": "clanic","url": "https://dev.to/clanic"},
+      {"network": "Medium","username": "claudiunicolaa","url": "https://medium.com/@claudiunicolaa"},
+      {"network": "Twitter","username": "clanic_x","url": "https://twitter.com/clanic_x"}
     ]
   },
   "work": [
-    {
-      "company": "FluidTrends",
-      "position": "Lead Software Engineer",
-      "website": "https://fluidtrends.ch/",
-      "startDate": "2023-03-01",
-      "summary": "Working on scalable cloud-native solutions for a product focused on onboarding web2 users into the web3 ecosystem. Lead a small team and provide guidance and mentorship. Being in charge of the backend architecture, design, and product implementation.",
-      "highlights": [
-        "Go (Golang), TypeScript",
-        "Docker, Kubernetes, GCP",
-        "MongoDB",
-        "Microservices, gRPC, GraphQL, CI/CD",
-        "Product, web3"
-      ]
-    },
-    {
-      "company": "FluidTrends",
-      "position": "Senior Software Engineer",
-      "website": "https://fluidtrends.ch/",
-      "startDate": "2022-12-05",
-      "endDate": "2023-03-01",
-      "summary": "Working on scalable cloud-native solutions for a product focused on onboarding web2 users into the web3 ecosystem.",
-      "highlights": [
-        "Go (Golang), TypeScript",
-        "Docker, Kubernetes, GCP",
-        "MongoDB",
-        "Microservices, gRPC, GraphQL, CI/CD",
-        "Product, web3"
-      ]
-    },
-    {
-      "company": "Around25",
-      "position": "Senior Software Engineer - Consultant",
-      "website": "https://around25.com/",
-      "startDate": "2022-12-05",
-      "endDate": "2023-06-05",
-      "summary": "Continue providing support for the team (few hours per month), in particular about Keycloak integration.",
-      "highlights": [
-        "Keycloak integration, CI/CD",
-        "SaaS, Customer Experience"
-      ]
-    },
-    {
-      "company": "Around25",
-      "position": "Senior Software Engineer",
-      "website": "https://around25.com/",
-      "startDate": "2021-07-05",
-      "endDate": "2022-12-05",
-      "summary": "Part of a team that delivers scalable microservices-based solutions for a scale-up business focused on Customer Service services (chatbots). Key contributions included rewriting NodeJS services in Go (Golang), integrating Keycloak for Authentication and Authorization, System Design around event-based architecture for better scalability, and delivering new features.",
-      "highlights": [
-        "Go (Golang), NodeJS, React",
-        "Docker, Traefik, Kubernetes, GCP, OVH",
-        "Keycloak integration, NATS, Redis",
-        "MySQL, PostgresSQL, MongoDB",
-        "Microservices, REST APIs, CI/CD",
-        "SaaS, Customer Experience"
-      ]
-    },
-    {
-      "company": "ComplyAdvantage",
-      "position": "Software Engineer",
-      "website": "https://complyadvantage.com/",
-      "startDate": "2019-10-07",
-      "endDate": "2021-06-30",
-      "summary": "Individual contributor alongside the Platform&API team. The team was responsible for delivering APIs and user interfaces used by customers in a collaborative enviroment with DevOps mindset and focus on continuous integration and delivery. Key contributions included breaking down the monolithic application into microservices, implementing OAuth2 authentication and introducing event-driven architecture for scaling purposes. I was involved in all parts of the SDLC, from planning and defining software design documents for new product features to maintenance and scaling.",
-      "highlights": [
-        "Python, PHP, Go (Golang), NodeJS",
-        "Docker, Terraform, Ambassador, Kubernetes, AWS",
-        "AWS Cognito integration, Kafka, Redis",
-        "MySQL, MongoDB",
-        "Microservices, REST APIs, Serverless, CI/CD, E2E Testing, Monitorning & Observability",
-        "SaaS, FinTech"
-      ]
-    },
-    {
-      "company": "WeSupply Labs",
-      "position": "Software Engineer",
-      "website": "https://labs.wesupply.xyz/",
-      "startDate": "2019-04-22",
-      "endDate": "2019-09-27",
-      "summary": "Giving a helping hand for a short period of time to a small start-up. Responsible for the design and implementation of core platform features.",
-      "highlights": [
-        "PHP, NodeJS, MongoDB, AngularJS, REST APIs, E2E Testing, Thid-parties integrations",
-        "SaaS, E-commerce, Post-Purchase Customer Experience"
-      ]
-    },
-    {
-      "company": "Evozon",
-      "position": "Backend Developer (PHP)",
-      "website": "https://www.evozon.com/",
-      "startDate": "2016-05-09",
-      "endDate": "2019-04-19",
-      "summary": "Contributed to two major project, an e-commerce that operated on the US market and a Bank Loan Managent Solution used by the biggest bank from Romania.",
-      "highlights": [
-        "PHP, Javascript, Relation Databases, REST APIs, RabbitMQ, Redis",
-        "Magento 1.x, Symfony 3.4",
-        "Laravel 5.x, ",
-        "E-commerce, Banking"
-      ]
-    },
-    {
-      "company": "Evozon",
-      "position": "Mentee",
-      "website": "https://www.evozon.com/",
-      "startDate": "2015-10-19",
-      "endDate": "2016-05-06",
-      "summary": "Joined a new mentorship program inside Evozon to go deeper into the world of software development. The program’s output was a Product Questions and Answers module for e-commerce websites. The module was adapted and used on real projects.",
-      "highlights": [
-        "PHP, Javascript, MySQL, REST APIs",
-        "Magento 1.x, Symfony 3.4"
-      ]
-    },
-    {
-      "company": "Evozon",
-      "position": "PHP Internship",
-      "website": "https://www.evozon.com/",
-      "startDate": "2015-08-17",
-      "endDate": "2015-10-16",
-      "summary": "Three months focused on backend development using PHP and MySQL. The final project was a team effort that simulated a real team building a small e-commerce website.",
-      "highlights": [
-        "Data Structures, PHP basics, OOP, Coding Standards",
-        "Design Patterns, MySQL, Software Development Life Cycle"
-      ]
-    }
+    {"company": "FluidTrends","position": "Lead Software Engineer","website": "https://fluidtrends.ch/","startDate": "2023-03-01","summary": "Working on scalable cloud-native solutions for a product focused on onboarding web2 users into the web3 ecosystem. Lead a small team and provide guidance and mentorship. Being in charge of the backend architecture, design, and product implementation.","highlights": ["Go (Golang), TypeScript","Docker, Kubernetes, GCP","MongoDB","Microservices, gRPC, GraphQL, CI/CD","Product, web3"]},
+    {"company": "FluidTrends","position": "Senior Software Engineer","website": "https://fluidtrends.ch/","startDate": "2022-12-05","endDate": "2023-03-01","summary": "Working on scalable cloud-native solutions for a product focused on onboarding web2 users into the web3 ecosystem.","highlights": ["Go (Golang), TypeScript","Docker, Kubernetes, GCP","MongoDB","Microservices, gRPC, GraphQL, CI/CD","Product, web3"]},
+    {"company": "Around25","position": "Senior Software Engineer - Consultant","website": "https://around25.com/","startDate": "2022-12-05","endDate": "2023-06-05","summary": "Continue providing support for the team (few hours per month), in particular about Keycloak integration.","highlights": ["Keycloak integration, CI/CD","SaaS, Customer Experience"]},
+    {"company": "Around25","position": "Senior Software Engineer","website": "https://around25.com/","startDate": "2021-07-05","endDate": "2022-12-05","summary": "Part of a team that delivers scalable microservices-based solutions for a scale-up business focused on Customer Service services (chatbots). Key contributions included rewriting NodeJS services in Go (Golang), integrating Keycloak for Authentication and Authorization, System Design around event-based architecture for better scalability, and delivering new features.","highlights": ["Go (Golang), NodeJS, React","Docker, Traefik, Kubernetes, GCP, OVH","Keycloak integration, NATS, Redis","MySQL, PostgresSQL, MongoDB","Microservices, REST APIs, CI/CD","SaaS, Customer Experience"]},
+    {"company": "ComplyAdvantage","position": "Software Engineer","website": "https://complyadvantage.com/","startDate": "2019-10-07","endDate": "2021-06-30","summary": "Individual contributor alongside the Platform&API team. The team was responsible for delivering APIs and user interfaces used by customers in a collaborative enviroment with DevOps mindset and focus on continuous integration and delivery. Key contributions included breaking down the monolithic application into microservices, implementing OAuth2 authentication and introducing event-driven architecture for scaling purposes. I was involved in all parts of the SDLC, from planning and defining software design documents for new product features to maintenance and scaling.","highlights": ["Python, PHP, Go (Golang), NodeJS","Docker, Terraform, Ambassador, Kubernetes, AWS","AWS Cognito integration, Kafka, Redis","MySQL, MongoDB","Microservices, REST APIs, Serverless, CI/CD, E2E Testing, Monitoring & Observability","SaaS, FinTech"]},
+    {"company": "WeSupply Labs","position": "Software Engineer","website": "https://labs.wesupply.xyz/","startDate": "2019-04-22","endDate": "2019-09-27","summary": "Giving a helping hand for a short period of time to a small start-up. Responsible for the design and implementation of core platform features.","highlights": ["PHP, NodeJS, MongoDB, AngularJS, REST APIs, E2E Testing, Third-party integrations","SaaS, E-commerce, Post-Purchase Customer Experience"]},
+    {"company": "Evozon","position": "Backend Developer (PHP)","website": "https://www.evozon.com/","startDate": "2016-05-09","endDate": "2019-04-19","summary": "Contributed to two major project, an e-commerce that operated on the US market and a Bank Loan Managent Solution used by the biggest bank from Romania.","highlights": ["PHP, Javascript, Relational Databases, REST APIs, RabbitMQ, Redis","Magento 1.x, Symfony 3.4","Laravel 5.x, ","E-commerce, Banking"]},
+    {"company": "Evozon","position": "Mentee","website": "https://www.evozon.com/","startDate": "2015-10-19","endDate": "2016-05-06","summary": "Joined a new mentorship program inside Evozon to go deeper into the world of software development. The program’s output was a Product Questions and Answers module for e-commerce websites. The module was adapted and used on real projects.","highlights": ["PHP, Javascript, MySQL, REST APIs","Magento 1.x, Symfony 3.4"]},
+    {"company": "Evozon","position": "PHP Internship","website": "https://www.evozon.com/","startDate": "2015-08-17","endDate": "2015-10-16","summary": "Three months focused on backend development using PHP and MySQL. The final project was a team effort that simulated a real team building a small e-commerce website.","highlights": ["Data Structures, PHP basics, OOP, Coding Standards","Design Patterns, MySQL, Software Development Life Cycle"]}
   ],
   "volunteer": [
-    {
-      "organization": "Babes-Bolyai University",
-      "position": "Mentor @ UBB IT Hub",
-      "website": "https://www.ubbcluj.ro/",
-      "startDate": "2018-03-01",
-      "endDate": "2018-09-01",
-      "summary": "Improve the digitalization level of the academic and administrative processes within Babes-Bolyai University.",
-      "highlights": []
-    },
-    {
-      "organization": "Cluj Y.Tech",
-      "position": "Founder",
-      "website": "https://cluj-ytech.github.io/",
-      "startDate": "2017-01-01",
-      "summary": "Cluj Y.Tech is a community of young techies, studying in Cluj. We feel responsible for our own trajectory so for that, we study and practice software development in school plus on our own free time. We believe that we should absorb all the knowledge we can from University, but there are more knowledge, experience, and ideas out there. Cluj is a vibrant city and we should take advantage of being here! And for that, we think we can do more if we stand united!",
-      "highlights": []
-    }
+    {"organization": "Babes-Bolyai University","position": "Mentor @ UBB IT Hub","website": "https://www.ubbcluj.ro/","startDate": "2018-03-01","endDate": "2018-09-01","summary": "Improve the digitalization level of the academic and administrative processes within Babes-Bolyai University.","highlights": []},
+    {"organization": "Cluj Y.Tech","position": "Founder","website": "https://cluj-ytech.github.io/","startDate": "2017-01-01","summary": "Cluj Y.Tech is a community of young techies, studying in Cluj. We feel responsible for our own trajectory so for that, we study and practice software development in school plus on our own free time. We believe that we should absorb all the knowledge we can from University, but there are more knowledge, experience, and ideas out there. Cluj is a vibrant city and we should take advantage of being here! And for that, we think we can do more if we stand united!","highlights": []}
   ],
   "education": [
-    {
-      "institution": "Babes-Bolyai University",
-      "area": "Science, Technology and Innovation in Public Governance",
-      "studyType": "Master Degree",
-      "startDate": "2018-10-01",
-      "endDate": "2020-07-05",
-      "gpa": "",
-      "courses": [
-        "Strategic Planning | Research Methods for Process Analysis | ICT Innovation in Governance | Building Performance in Public Services: Emergency Response System | Legislative Debates regarding innovation and technology | Participatory Governance | E-government | Sustainable urban development | Public budgets"
-      ]
-    },
-    {
-      "institution": "Babes-Bolyai University",
-      "area": "Computer Science",
-      "studyType": "Bachelor",
-      "startDate": "2015-10-01",
-      "endDate": "2018-07-08",
-      "gpa": "",
-      "courses": []
-    }
+    {"institution": "Babes-Bolyai University","area": "Science, Technology and Innovation in Public Governance","studyType": "Master Degree","startDate": "2018-10-01","endDate": "2020-07-05","gpa": "","courses": ["Strategic Planning | Research Methods for Process Analysis | ICT Innovation in Governance | Building Performance in Public Services: Emergency Response System | Legislative Debates regarding innovation and technology | Participatory Governance | E-government | Sustainable urban development | Public budgets"]},
+    {"institution": "Babes-Bolyai University","area": "Computer Science","studyType": "Bachelor","startDate": "2015-10-01","endDate": "2018-07-08","gpa": "","courses": []}
   ],
   "awards": [
-    {
-      "title": "Transylvania Tech Talent Contest",
-      "date": "2018-03-31",
-      "awarder": "MA Science, Technology and Innovation in Public Governance",
-      "summary": "4rd place"
-    },
-    {
-      "title": "Entrepreneurship Nights",
-      "date": "2017-12-09",
-      "awarder": "SAS UBB",
-      "summary": "1st place - Best business idea."
-    }
+    {"title": "Transylvania Tech Talent Contest","date": "2018-03-31","awarder": "MA Science, Technology and Innovation in Public Governance","summary": "4th place"},
+    {"title": "Entrepreneurship Nights","date": "2017-12-09","awarder": "SAS UBB","summary": "1st place - Best business idea."}
   ],
   "publications": [
-    {
-      "name": "Using Private Go Modules with golangci-lint in GitHub Actions",
-      "publisher": "dev.to",
-      "releaseDate": "2024-01-05",
-      "website": "https://dev.to/clanic/using-private-go-modules-with-golangci-lint-in-github-actions-288j",
-      "summary": ""
-    },
-    {
-      "name": "NATS Message Deduplication in Go",
-      "publisher": "dev.to",
-      "releaseDate": "2023-04-29",
-      "website": "https://dev.to/clanic/effortless-nats-message-deduplication-in-go-2ohl",
-      "summary": ""
-    },
-    {
-      "name": "AWS Lambda Go logging middleware example",
-      "publisher": "dev.to",
-      "releaseDate": "2021-02-26",
-      "website": "https://dev.to/clanic/learning-golang-middlewares-23g3",
-      "summary": ""
-    },
-    {
-      "name": "selfTaught && findMentor",
-      "publisher": "Medium",
-      "releaseDate": "2017-12-11",
-      "website": "https://medium.com/@claudiunicolaa/selftaught-findmentor-e65cd5a232c2",
-      "summary": ""
-    }
+    {"name": "Using Private Go Modules with golangci-lint in GitHub Actions","publisher": "dev.to","releaseDate": "2024-01-05","website": "https://dev.to/clanic/using-private-go-modules-with-golangci-lint-in-github-actions-288j","summary": ""},
+    {"name": "NATS Message Deduplication in Go","publisher": "dev.to","releaseDate": "2023-04-29","website": "https://dev.to/clanic/effortless-nats-message-deduplication-in-go-2ohl","summary": ""},
+    {"name": "AWS Lambda Go logging middleware example","publisher": "dev.to","releaseDate": "2021-02-26","website": "https://dev.to/clanic/learning-golang-middlewares-23g3","summary": ""},
+    {"name": "selfTaught && findMentor","publisher": "Medium","releaseDate": "2017-12-11","website": "https://medium.com/@claudiunicolaa/selftaught-findmentor-e65cd5a232c2","summary": ""}
   ],
   "skills": [
-    {
-      "name": "Worked with (alphabetically):",
-      "keywords": [
-        "Ambassador",
-        "AWS",
-        "AWS Cognito",
-        "CI/CD",
-        "E2E Testing",
-        "Docker",
-        "GCP",
-        "Go (Golang)",
-        "Kafka",
-        "Keycloak",
-        "Kubernetes",
-        "JavaScript",
-        "Microservices",
-        "MongoDB",
-        "Monitoring & Observability",
-        "NATS",
-        "NodeJS",
-        "MySQL",
-        "Linux",
-        "PHP",
-        "Python",
-        "RabbitMQ",
-        "Redis",
-        "REST APIs",
-        "Serverless",
-        "Traefik",
-        "Terraform"
-      ]
-    }
+    {"name": "Worked with (alphabetically):","keywords": ["Ambassador","AWS","AWS Cognito","CI/CD","E2E Testing","Docker","GCP","Go (Golang)","Kafka","Keycloak","Kubernetes","JavaScript","Microservices","MongoDB","Monitoring & Observability","NATS","NodeJS","MySQL","Linux","PHP","Python","RabbitMQ","Redis","REST APIs","Serverless","Traefik","Terraform"]}
   ],
   "languages": [
-    {
-      "language": "Romanian",
-      "fluency": "Native speaker"
-    },
-    {
-      "language": "English",
-      "fluency": "Professional working proficiency"
-    }
+    {"language": "Romanian","fluency": "Native speaker"},
+    {"language": "English","fluency": "Professional working proficiency"}
   ],
   "interests": [
-    {
-      "name": "Software Engineering",
-      "keywords": []
-    },
-    {
-      "name": "Open Source",
-      "keywords": []
-    },
-    {
-      "name": "Philosophy",
-      "keywords": []
-    },
-    {
-      "name": "Psychology",
-      "keywords": []
-    },
-    {
-      "name": "Leadership",
-      "keywords": []
-    }
+    {"name": "Software Engineering","keywords": []},
+    {"name": "Open Source","keywords": []},
+    {"name": "Philosophy","keywords": []},
+    {"name": "Psychology","keywords": []},
+    {"name": "Leadership","keywords": []}
   ],
   "references": [
-    {
-      "name": "",
-      "reference": ""
-    }
+    {"name": "","reference": ""}
   ]
 }

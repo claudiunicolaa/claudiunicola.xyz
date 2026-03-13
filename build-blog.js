@@ -172,6 +172,10 @@ const postTemplate = Handlebars.compile(
   fs.readFileSync(path.join(TEMPLATES_DIR, "post.hbs"), "utf-8")
 );
 
+const tagTemplate = Handlebars.compile(
+  fs.readFileSync(path.join(TEMPLATES_DIR, "tag.hbs"), "utf-8")
+);
+
 const indexTemplate = Handlebars.compile(`<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -262,81 +266,24 @@ const indexTemplate = Handlebars.compile(`<!DOCTYPE html>
     <p class="empty">No posts yet. Check back soon!</p>
     {{/if}}
     <a href="{{baseUrl}}/posts/feed.xml" class="rss-link">&#128225; RSS Feed</a>
-  </div>
-  <footer>&copy; {{year}} Claudiu Nicola. All rights reserved.</footer>
-</body>
-</html>`);
-
-const tagTemplate = Handlebars.compile(`<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Posts tagged "{{tag}}" — Claudiu Nicola</title>
-  <meta name="description" content="Articles tagged with {{tag}} — software engineering, backend development, and more by Claudiu Nicola.">
-  <meta name="author" content="{{author}}">
-  <meta name="keywords" content="{{tag}}, software engineering, Claudiu Nicola">
-  <link rel="canonical" href="{{canonicalUrl}}">
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Posts tagged &quot;{{tag}}&quot; — Claudiu Nicola">
-  <meta property="og:description" content="Articles tagged with {{tag}} — software engineering, backend development, and more by Claudiu Nicola.">
-  <meta property="og:url" content="{{canonicalUrl}}">
-  <meta property="og:site_name" content="Claudiu Nicola">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Posts tagged &quot;{{tag}}&quot; — Claudiu Nicola">
-  <meta name="twitter:description" content="Articles tagged with {{tag}} — software engineering, backend development, and more by Claudiu Nicola.">
-
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Posts tagged \\"{{tag}}\\"",
-    "description": "Articles tagged with {{tag}} by Claudiu Nicola",
-    "url": "{{canonicalUrl}}",
-    "author": {
-      "@type": "Person",
-      "name": "{{author}}",
-      "url": "{{baseUrl}}"
-    }
-  }
-  </script>
-
-  <link rel="alternate" type="application/rss+xml" title="{{siteTitle}}" href="{{baseUrl}}/posts/feed.xml">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{baseUrl}}/posts/style.css">
-</head>
-<body>
-  <header class="site-header">
-    <div class="site-header-inner">
-      <a href="{{baseUrl}}/" class="brand">Claudiu Nicola</a>
-      <nav>
-        <a href="{{baseUrl}}/">Resume</a>
-        <a href="{{baseUrl}}/posts/" aria-current="page">Blog</a>
-      </nav>
-    </div>
-  </header>
-  <div class="container">
-    <h1>Posts tagged <span class="tag-label">{{tag}}</span></h1>
-    <p class="lead">{{postCount}} article{{#unless singlePost}}s{{/unless}} tagged with "{{tag}}".</p>
-    <ul class="post-list">
-      {{#each posts}}
-      <li>
-        <a href="{{../baseUrl}}/posts/{{this.slug}}/">
-          <div class="meta">
-            <time datetime="{{isoDate this.date}}">{{formatDate this.date}}</time>
-          </div>
-          <h2>{{this.title}}</h2>
-          {{#if this.summary}}<p class="summary">{{this.summary}}</p>{{/if}}
-        </a>
-      </li>
+    {{#if allTags}}
+    <section class="tags-aggregation" aria-label="Posts grouped by tag">
+      <h2>Browse by Tag</h2>
+      {{#each allTags}}
+      <div class="tag-group">
+        <h3 class="tag-group-title">
+          <a href="{{../baseUrl}}/posts/tags/{{this.slug}}/" class="tag-group-link">{{this.name}}</a>
+          <span class="tag-count">({{this.count}})</span>
+        </h3>
+        <ul class="tag-group-posts">
+          {{#each this.posts}}
+          <li><a href="{{../../baseUrl}}/posts/{{this.slug}}/">{{this.title}}</a></li>
+          {{/each}}
+        </ul>
+      </div>
       {{/each}}
-    </ul>
-    <a href="{{baseUrl}}/posts/" class="back-link">&larr; Back to all posts</a>
+    </section>
+    {{/if}}
   </div>
   <footer>&copy; {{year}} Claudiu Nicola. All rights reserved.</footer>
 </body>
@@ -469,6 +416,7 @@ function main() {
     name,
     slug: makeTagSlug(name),
     count: tagPosts.length,
+    posts: tagPosts, // included for tags aggregation section on index page
   }));
 
   const indexHtml = indexTemplate({

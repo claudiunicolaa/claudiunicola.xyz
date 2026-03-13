@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Using Private Go Modules with golangci-lint in GitHub Actions — Claudiu Nicola</title>
+  <meta name="description" content="A practical guide to configuring GitHub Actions for Go projects that use private modules alongside golangci-lint.">
+  <meta name="author" content="Claudiu Nicola">
+  <meta name="keywords" content="golangci-lint private modules, Go GitHub Actions, private Go modules CI, golang CI/CD pipeline, GitHub Actions Go setup">
+  <link rel="canonical" href="https://claudiunicola.xyz/posts/using-private-go-modules-with-golangci-lint/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Using Private Go Modules with golangci-lint in GitHub Actions">
+  <meta property="og:description" content="A practical guide to configuring GitHub Actions for Go projects that use private modules alongside golangci-lint.">
+  <meta property="og:url" content="https://claudiunicola.xyz/posts/using-private-go-modules-with-golangci-lint/">
+  <meta property="og:site_name" content="Claudiu Nicola">
+  
+  <meta property="article:published_time" content="2024-01-05T00:00:00.000Z">
+  <meta property="article:tag" content="golang">
+<meta property="article:tag" content="github-actions">
+<meta property="article:tag" content="ci-cd">
+<meta property="article:tag" content="devops">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Using Private Go Modules with golangci-lint in GitHub Actions">
+  <meta name="twitter:description" content="A practical guide to configuring GitHub Actions for Go projects that use private modules alongside golangci-lint.">
+  
+
+  <!-- JSON-LD BlogPosting structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Using Private Go Modules with golangci-lint in GitHub Actions",
+    "description": "A practical guide to configuring GitHub Actions for Go projects that use private modules alongside golangci-lint.",
+    "url": "https://claudiunicola.xyz/posts/using-private-go-modules-with-golangci-lint/",
+    "datePublished": "2024-01-05T00:00:00.000Z",
+    "dateModified": "2024-01-05T00:00:00.000Z",
+    "inLanguage": "en",
+    "author": {
+      "@type": "Person",
+      "name": "Claudiu Nicola",
+      "url": "https://claudiunicola.xyz"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Claudiu Nicola"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://claudiunicola.xyz/posts/using-private-go-modules-with-golangci-lint/"
+    },
+    "keywords": "golangci-lint private modules, Go GitHub Actions, private Go modules CI, golang CI/CD pipeline, GitHub Actions Go setup"
+  }
+  </script>
+
+  <link rel="alternate" type="application/rss+xml" title="Claudiu Nicola — Blog" href="https://claudiunicola.xyz/posts/feed.xml">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://claudiunicola.xyz/posts/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a href="https://claudiunicola.xyz/">Claudiu Nicola</a>
+    <nav>
+      <a href="https://claudiunicola.xyz/">Resume</a>
+      <a href="https://claudiunicola.xyz/posts/">Blog</a>
+    </nav>
+  </header>
+  <article>
+    <h1>Using Private Go Modules with golangci-lint in GitHub Actions</h1>
+    <div class="post-meta">
+      <time datetime="2024-01-05T00:00:00.000Z">January 5, 2024</time>
+      <span class="tags"> &middot; <a href="https://claudiunicola.xyz/posts/tags/golang/"><span>golang</span></a> <a href="https://claudiunicola.xyz/posts/tags/github-actions/"><span>github-actions</span></a> <a href="https://claudiunicola.xyz/posts/tags/ci-cd/"><span>ci-cd</span></a> <a href="https://claudiunicola.xyz/posts/tags/devops/"><span>devops</span></a> </span>
+    </div>
+    <p>If you’re working with <strong>private Go modules</strong> and using
+<code>golangci-lint</code> in your CI pipeline, you’ve probably hit the
+authentication wall. Here’s how to solve it cleanly in GitHub
+Actions.</p>
+<h2 id="the-problem">The Problem</h2>
+<p>When <code>golangci-lint</code> runs in GitHub Actions, it needs to
+fetch your private Go modules. By default, <code>go</code> commands
+can’t access private repositories without proper authentication.</p>
+<h2 id="the-solution">The Solution</h2>
+<p>Configure <code>GOPRIVATE</code> and set up Git credentials before
+running the linter.</p>
+<pre class="yaml"><code>- name: Configure git for private modules
+  run: |
+    git config --global url.&quot;https://${{ secrets.GH_TOKEN }}@github.com/&quot;.insteadOf &quot;https://github.com/&quot;
+
+- name: Set GOPRIVATE
+  run: echo &quot;GOPRIVATE=github.com/your-org/*&quot; &gt;&gt; $GITHUB_ENV
+
+- name: Run golangci-lint
+  uses: golangci/golangci-lint-action@v3
+  with:
+    version: latest</code></pre>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol type="1">
+<li>Always set <code>GOPRIVATE</code> to skip the Go module proxy for
+your private repos</li>
+<li>Use <code>insteadOf</code> git config to inject authentication
+tokens</li>
+<li>Place the git configuration step <strong>before</strong> any
+Go-related steps</li>
+</ol>
+<p>This approach keeps your CI pipeline clean and avoids leaking
+credentials.</p>
+
+    <a href="https://claudiunicola.xyz/posts/" class="back-link">&larr; Back to all posts</a>
+  </article>
+  <footer>&copy; 2026 Claudiu Nicola. All rights reserved.</footer>
+</body>
+</html>

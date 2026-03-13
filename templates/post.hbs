@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{title}} — {{author}}</title>
+  <meta name="description" content="{{summary}}">
+  <meta name="author" content="{{author}}">
+  {{#if keywords}}<meta name="keywords" content="{{keywords}}">{{/if}}
+  <link rel="canonical" href="{{canonicalUrl}}">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{title}}">
+  <meta property="og:description" content="{{summary}}">
+  <meta property="og:url" content="{{canonicalUrl}}">
+  <meta property="og:site_name" content="Claudiu Nicola">
+  {{#if og_image}}<meta property="og:image" content="{{og_image}}">{{/if}}
+  <meta property="article:published_time" content="{{isoDate date}}">
+  {{#each tags}}<meta property="article:tag" content="{{this}}">
+  {{/each}}
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{title}}">
+  <meta name="twitter:description" content="{{summary}}">
+  {{#if og_image}}<meta name="twitter:image" content="{{og_image}}">{{/if}}
+
+  <!-- JSON-LD BlogPosting structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{title}}",
+    "description": "{{summary}}",
+    "url": "{{canonicalUrl}}",
+    "datePublished": "{{isoDate date}}",
+    "dateModified": "{{isoDate date}}",
+    "inLanguage": "en",
+    "author": {
+      "@type": "Person",
+      "name": "{{author}}",
+      "url": "{{baseUrl}}"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "{{author}}"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{canonicalUrl}}"
+    }{{#if keywords}},
+    "keywords": "{{keywords}}"{{/if}}{{#if og_image}},
+    "image": "{{og_image}}"{{/if}}
+  }
+  </script>
+
+  <link rel="alternate" type="application/rss+xml" title="{{author}} — Blog" href="{{baseUrl}}/posts/feed.xml">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{baseUrl}}/posts/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a href="{{baseUrl}}/">Claudiu Nicola</a>
+    <nav>
+      <a href="{{baseUrl}}/">Resume</a>
+      <a href="{{baseUrl}}/posts/">Blog</a>
+    </nav>
+  </header>
+  <article>
+    <h1>{{title}}</h1>
+    <div class="post-meta">
+      <time datetime="{{isoDate date}}">{{formatDate date}}</time>
+      {{#if tags}}<span class="tags"> &middot; {{#each tags}}<a href="{{../baseUrl}}/posts/tags/{{tagSlugHelper this}}/"><span>{{this}}</span></a> {{/each}}</span>{{/if}}
+    </div>
+    {{{content}}}
+    <a href="{{baseUrl}}/posts/" class="back-link">&larr; Back to all posts</a>
+  </article>
+  <footer>&copy; {{year}} Claudiu Nicola. All rights reserved.</footer>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 --version 2>&1 && which uvx 2>/dev/null && uvx --version 2>/dev/null && which claude 2>/dev/null)",
+      "Bash(curl -s --max-time 3 https://api.github.com/repos/Q00/ouroboros/releases/latest | grep -o '\"tag_name\": \"[^\"]*\"' | head -1)",
+      "mcp__plugin_ouroboros_ouroboros__ouroboros_interview",
+      "mcp__plugin_ouroboros_ouroboros__ouroboros_generate_seed",
+      "mcp__plugin_ouroboros_ouroboros__ouroboros_start_execute_seed",
+      "mcp__plugin_ouroboros_ouroboros__ouroboros_job_wait",
+      "mcp__plugin_ouroboros_ouroboros__ouroboros_job_result",
+      "Bash(sqlite3 ~/.ouroboros/ouroboros.db \".tables\")",
+      "Bash(sqlite3 ~/.ouroboros/ouroboros.db \"SELECT event_type, session_id, substr\\(data,1,200\\) FROM events WHERE event_type LIKE '%seed%' ORDER BY timestamp DESC LIMIT 5\")",
+      "Bash(sqlite3 ~/.ouroboros/ouroboros.db \"PRAGMA table_info\\(events\\)\" && sqlite3 ~/.ouroboros/ouroboros.db \"SELECT event_type, substr\\(data,1,300\\) FROM events WHERE event_type LIKE '%seed%' ORDER BY timestamp DESC LIMIT 5\")",
+      "Bash(sqlite3 ~/.ouroboros/ouroboros.db \"SELECT event_type, aggregate_id, substr\\(payload,1,300\\) FROM events WHERE event_type LIKE '%seed%' ORDER BY timestamp DESC LIMIT 5\")",
+      "Bash(sqlite3 ~/.ouroboros/ouroboros.db \"SELECT DISTINCT event_type FROM events ORDER BY event_type\" && sqlite3 ~/.ouroboros/ouroboros.db \"SELECT aggregate_id, event_type, substr\\(payload,1,200\\) FROM events ORDER BY timestamp DESC LIMIT 10\")",
+      "Bash(sqlite3 ~/.ouroboros/ouroboros.db \"SELECT aggregate_id, event_type, substr\\(payload,1,500\\) FROM events WHERE aggregate_id LIKE 'seed%' ORDER BY timestamp DESC LIMIT 5\")",
+      "Bash(sqlite3 ~/.ouroboros/ouroboros.db \"SELECT aggregate_id, event_type, substr\\(payload,1,500\\) FROM events WHERE payload LIKE '%seed_c74c97a53eca%' LIMIT 5\")",
+      "mcp__plugin_ouroboros_ouroboros__ouroboros_evaluate",
+      "Bash(node build-blog.js 2>&1)",
+      "Bash(npm test:*)",
+      "Bash(npm run:*)"
+    ]
+  }
+}

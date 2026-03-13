@@ -134,6 +134,17 @@ function fmtDateHuman(d) {
   });
 }
 
+/**
+ * Estimate reading time from markdown/text content.
+ * Assumes ~200 words per minute average reading speed.
+ * @param {string} text - Raw markdown or plain text
+ * @returns {number} Minutes to read (minimum 1)
+ */
+function estimateReadingTime(text) {
+  const words = text.trim().split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.ceil(words / 200));
+}
+
 // ---------------------------------------------------------------------------
 // Handlebars helpers
 // ---------------------------------------------------------------------------
@@ -207,14 +218,19 @@ const indexTemplate = Handlebars.compile(`<!DOCTYPE html>
 </head>
 <body>
   <header class="site-header">
-    <a href="{{baseUrl}}/">Claudiu Nicola</a>
-    <nav>
-      <a href="{{baseUrl}}/">Resume</a>
-      <a href="{{baseUrl}}/posts/">Blog</a>
-    </nav>
+    <div class="site-header-inner">
+      <a href="{{baseUrl}}/" class="brand">Claudiu Nicola</a>
+      <nav>
+        <a href="{{baseUrl}}/">Resume</a>
+        <a href="{{baseUrl}}/posts/" aria-current="page">Blog</a>
+      </nav>
+    </div>
   </header>
   <div class="container">
-    <h1>Blog</h1>
+    <div class="blog-intro">
+      <h1>Blog</h1>
+      {{#if posts.length}}<span class="post-count-badge">{{posts.length}} article{{#unless singlePost}}s{{/unless}}</span>{{/if}}
+    </div>
     <p class="lead">{{siteDescription}}</p>
     {{#if allTags}}
     <section class="tags-section" aria-label="Browse by topic">
@@ -233,7 +249,8 @@ const indexTemplate = Handlebars.compile(`<!DOCTYPE html>
         <a href="{{../baseUrl}}/posts/{{this.slug}}/">
           <div class="meta">
             <time datetime="{{isoDate this.date}}">{{formatDate this.date}}</time>
-            {{#if this.tags}}<span class="tags">{{#each this.tags}}<a href="{{../../baseUrl}}/posts/tags/{{tagSlugHelper this}}/"><span>{{this}}</span></a> {{/each}}</span>{{/if}}
+            {{#if this.readingTime}}<span class="meta-sep">·</span><span class="reading-time">{{this.readingTime}} min read</span>{{/if}}
+            {{#if this.tags}}<span class="meta-sep">·</span><span class="tags">{{#each this.tags}}<a href="{{../../baseUrl}}/posts/tags/{{tagSlugHelper this}}/"><span>{{this}}</span></a>{{/each}}</span>{{/if}}
           </div>
           <h2>{{this.title}}</h2>
           {{#if this.summary}}<p class="summary">{{this.summary}}</p>{{/if}}
@@ -244,9 +261,9 @@ const indexTemplate = Handlebars.compile(`<!DOCTYPE html>
     {{else}}
     <p class="empty">No posts yet. Check back soon!</p>
     {{/if}}
-    <a href="{{baseUrl}}/posts/feed.xml" class="rss-link">📡 RSS Feed</a>
+    <a href="{{baseUrl}}/posts/feed.xml" class="rss-link">&#128225; RSS Feed</a>
   </div>
-  <footer>© {{year}} Claudiu Nicola. All rights reserved.</footer>
+  <footer>&copy; {{year}} Claudiu Nicola. All rights reserved.</footer>
 </body>
 </html>`);
 
@@ -295,11 +312,13 @@ const tagTemplate = Handlebars.compile(`<!DOCTYPE html>
 </head>
 <body>
   <header class="site-header">
-    <a href="{{baseUrl}}/">Claudiu Nicola</a>
-    <nav>
-      <a href="{{baseUrl}}/">Resume</a>
-      <a href="{{baseUrl}}/posts/">Blog</a>
-    </nav>
+    <div class="site-header-inner">
+      <a href="{{baseUrl}}/" class="brand">Claudiu Nicola</a>
+      <nav>
+        <a href="{{baseUrl}}/">Resume</a>
+        <a href="{{baseUrl}}/posts/" aria-current="page">Blog</a>
+      </nav>
+    </div>
   </header>
   <div class="container">
     <h1>Posts tagged <span class="tag-label">{{tag}}</span></h1>
@@ -375,6 +394,7 @@ function main() {
         ? meta.keywords
         : "";
     const og_image = meta.og_image || "";
+    const readingTime = estimateReadingTime(body);
 
     // Convert markdown body to HTML via pandoc
     const htmlContent = markdownToHtml(body);
@@ -389,6 +409,7 @@ function main() {
       tags,
       keywords,
       og_image,
+      readingTime,
       content: htmlContent,
       canonicalUrl,
       baseUrl: BASE_URL,
@@ -402,7 +423,7 @@ function main() {
     fs.writeFileSync(path.join(postDir, "index.html"), postHtml, "utf-8");
     console.log(`  → posts/${slug}/index.html`);
 
-    posts.push({ slug, title, date, summary, tags, keywords, og_image, canonicalUrl });
+    posts.push({ slug, title, date, summary, tags, keywords, og_image, readingTime, canonicalUrl });
   }
 
   // ---- Tag map ----
@@ -453,6 +474,7 @@ function main() {
   const indexHtml = indexTemplate({
     posts,
     allTags,
+    singlePost: posts.length === 1,
     baseUrl: BASE_URL,
     siteTitle: SITE_TITLE,
     siteDescription: SITE_DESCRIPTION,

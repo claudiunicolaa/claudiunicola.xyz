@@ -2,6 +2,8 @@
 
 # json --> html
 resume export index.html --theme classy
+# json --> pdf
+resume export Claudiu_Nicola_Resume.pdf --format pdf --theme classy
 
 # http --> https
 sed -i '' -e 's|http://|https://|g' index.html
@@ -15,6 +17,9 @@ node build-blog.js
 echo "Blog build complete."
 
 # push
-git add .
-git commit -m 'update content'
-git push origin master
+read -r -p "Push to git? [y/N] " reply
+if [[ "$reply" =~ ^[Yy]$ ]]; then
+	git add .
+	git commit -m 'update content'
+	git push origin master
+fi

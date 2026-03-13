@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Designing Resilient Microservices in Go: Patterns That Work in Production — Claudiu Nicola</title>
+  <meta name="description" content="A deep dive into practical resilience patterns for Go microservices — circuit breakers, retries with backoff, graceful shutdown, and health checks — based on real production experience.">
+  <meta name="author" content="Claudiu Nicola">
+  <meta name="keywords" content="Go microservices resilience patterns, circuit breaker Go, graceful shutdown Golang, retry with exponential backoff Go, health check microservices Go, cloud-native backend engineering">
+  <link rel="canonical" href="https://claudiunicola.xyz/posts/designing-resilient-microservices-in-go/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Designing Resilient Microservices in Go: Patterns That Work in Production">
+  <meta property="og:description" content="A deep dive into practical resilience patterns for Go microservices — circuit breakers, retries with backoff, graceful shutdown, and health checks — based on real production experience.">
+  <meta property="og:url" content="https://claudiunicola.xyz/posts/designing-resilient-microservices-in-go/">
+  <meta property="og:site_name" content="Claudiu Nicola">
+  <meta property="og:image" content="https://claudiunicola.xyz/profile.jpg">
+  <meta property="article:published_time" content="2025-03-10T00:00:00.000Z">
+  <meta property="article:tag" content="golang">
+<meta property="article:tag" content="microservices">
+<meta property="article:tag" content="cloud-native">
+<meta property="article:tag" content="backend">
+<meta property="article:tag" content="software-architecture">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Designing Resilient Microservices in Go: Patterns That Work in Production">
+  <meta name="twitter:description" content="A deep dive into practical resilience patterns for Go microservices — circuit breakers, retries with backoff, graceful shutdown, and health checks — based on real production experience.">
+  <meta name="twitter:image" content="https://claudiunicola.xyz/profile.jpg">
+
+  <!-- JSON-LD BlogPosting structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Designing Resilient Microservices in Go: Patterns That Work in Production",
+    "description": "A deep dive into practical resilience patterns for Go microservices — circuit breakers, retries with backoff, graceful shutdown, and health checks — based on real production experience.",
+    "url": "https://claudiunicola.xyz/posts/designing-resilient-microservices-in-go/",
+    "datePublished": "2025-03-10T00:00:00.000Z",
+    "dateModified": "2025-03-10T00:00:00.000Z",
+    "inLanguage": "en",
+    "author": {
+      "@type": "Person",
+      "name": "Claudiu Nicola",
+      "url": "https://claudiunicola.xyz"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Claudiu Nicola"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://claudiunicola.xyz/posts/designing-resilient-microservices-in-go/"
+    },
+    "keywords": "Go microservices resilience patterns, circuit breaker Go, graceful shutdown Golang, retry with exponential backoff Go, health check microservices Go, cloud-native backend engineering",
+    "image": "https://claudiunicola.xyz/profile.jpg"
+  }
+  </script>
+
+  <link rel="alternate" type="application/rss+xml" title="Claudiu Nicola — Blog" href="https://claudiunicola.xyz/posts/feed.xml">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://claudiunicola.xyz/posts/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="https://claudiunicola.xyz/" class="brand">Claudiu Nicola</a>
+      <nav>
+        <a href="https://claudiunicola.xyz/">Resume</a>
+        <a href="https://claudiunicola.xyz/posts/" aria-current="page">Blog</a>
+      </nav>
+    </div>
+  </header>
+  <article>
+    <h1>Designing Resilient Microservices in Go: Patterns That Work in Production</h1>
+    <div class="post-meta">
+      <time datetime="2025-03-10T00:00:00.000Z">March 10, 2025</time>
+      <span class="meta-sep">&middot;</span><span class="reading-time">4 min read</span>
+      <span class="tags">&middot; <a href="https://claudiunicola.xyz/posts/tags/golang/"><span>golang</span></a> <a href="https://claudiunicola.xyz/posts/tags/microservices/"><span>microservices</span></a> <a href="https://claudiunicola.xyz/posts/tags/cloud-native/"><span>cloud-native</span></a> <a href="https://claudiunicola.xyz/posts/tags/backend/"><span>backend</span></a> <a href="https://claudiunicola.xyz/posts/tags/software-architecture/"><span>software-architecture</span></a> </span>
+    </div>
+    <p>Building microservices that stay up under pressure is harder than it
+looks. Distributed systems fail in unexpected ways — network blips,
+dependency outages, resource exhaustion — and your service needs to
+handle each gracefully without cascading failures.</p>
+<p>Here are the patterns I rely on in Go production services.</p>
+<h2 id="circuit-breakers">1. Circuit Breakers</h2>
+<p>A circuit breaker stops calling a downstream service when it’s
+clearly unhealthy, giving it time to recover and protecting your service
+from long queues of waiting goroutines.</p>
+<pre class="go"><code>type CircuitBreaker struct {
+    mu           sync.Mutex
+    failureCount int
+    threshold    int
+    lastFailure  time.Time
+    cooldown     time.Duration
+    state        string // &quot;closed&quot;, &quot;open&quot;, &quot;half-open&quot;
+}
+
+func (cb *CircuitBreaker) Allow() bool {
+    cb.mu.Lock()
+    defer cb.mu.Unlock()
+
+    if cb.state == &quot;open&quot; {
+        if time.Since(cb.lastFailure) &gt; cb.cooldown {
+            cb.state = &quot;half-open&quot;
+            return true
+        }
+        return false
+    }
+    return true
+}
+
+func (cb *CircuitBreaker) RecordFailure() {
+    cb.mu.Lock()
+    defer cb.mu.Unlock()
+
+    cb.failureCount++
+    cb.lastFailure = time.Now()
+    if cb.failureCount &gt;= cb.threshold {
+        cb.state = &quot;open&quot;
+    }
+}
+
+func (cb *CircuitBreaker) RecordSuccess() {
+    cb.mu.Lock()
+    defer cb.mu.Unlock()
+
+    cb.failureCount = 0
+    cb.state = &quot;closed&quot;
+}</code></pre>
+<p>For production use, prefer a battle-tested library like <a
+href="https://github.com/sony/gobreaker">sony/gobreaker</a> rather than
+rolling your own.</p>
+<h2 id="retry-with-exponential-backoff">2. Retry with Exponential
+Backoff</h2>
+<p>Never retry immediately — you’ll overwhelm an already struggling
+service. Add jitter to avoid the <a
+href="https://en.wikipedia.org/wiki/Thundering_herd_problem">thundering
+herd problem</a>.</p>
+<pre class="go"><code>func retryWithBackoff(ctx context.Context, maxAttempts int, fn func() error) error {
+    base := 100 * time.Millisecond
+
+    for attempt := 0; attempt &lt; maxAttempts; attempt++ {
+        err := fn()
+        if err == nil {
+            return nil
+        }
+
+        if attempt == maxAttempts-1 {
+            return fmt.Errorf(&quot;all %d attempts failed: %w&quot;, maxAttempts, err)
+        }
+
+        // Exponential backoff with jitter
+        backoff := base * time.Duration(1&lt;&lt;attempt)
+        jitter := time.Duration(rand.Int63n(int64(backoff) / 2))
+        sleep := backoff + jitter
+
+        select {
+        case &lt;-ctx.Done():
+            return ctx.Err()
+        case &lt;-time.After(sleep):
+        }
+    }
+    return nil
+}</code></pre>
+<p>Key details: - Always pass a <code>context.Context</code> so callers
+can cancel - Cap the maximum backoff (e.g., 30 seconds) - Don’t retry
+non-retryable errors (auth failures, bad requests)</p>
+<h2 id="graceful-shutdown">3. Graceful Shutdown</h2>
+<p>Abrupt shutdown drops in-flight requests and corrupts background
+jobs. Go makes graceful shutdown straightforward with
+<code>os.Signal</code> and <code>context.Context</code>.</p>
+<pre class="go"><code>func main() {
+    srv := &amp;http.Server{Addr: &quot;:8080&quot;, Handler: newRouter()}
+
+    // Start server in background
+    go func() {
+        if err := srv.ListenAndServe(); err != nil &amp;&amp; err != http.ErrServerClosed {
+            log.Fatalf(&quot;listen: %v&quot;, err)
+        }
+    }()
+
+    // Wait for OS signal
+    quit := make(chan os.Signal, 1)
+    signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
+    &lt;-quit
+
+    log.Println(&quot;shutting down server...&quot;)
+
+    // Allow 30s for in-flight requests to finish
+    ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+    defer cancel()
+
+    if err := srv.Shutdown(ctx); err != nil {
+        log.Fatalf(&quot;forced shutdown: %v&quot;, err)
+    }
+
+    log.Println(&quot;server stopped&quot;)
+}</code></pre>
+<p>In Kubernetes, this integrates with <code>preStop</code> hooks and
+<code>terminationGracePeriodSeconds</code> to give your pod time to
+drain traffic before termination.</p>
+<h2 id="health-check-endpoints">4. Health Check Endpoints</h2>
+<p>Kubernetes liveness and readiness probes need distinct endpoints with
+different semantics:</p>
+<ul>
+<li><strong><code>/healthz/live</code></strong> — is the process alive?
+(liveness probe)</li>
+<li><strong><code>/healthz/ready</code></strong> — can the process serve
+traffic? (readiness probe)</li>
+</ul>
+<pre class="go"><code>// Liveness: basic process health. Fail here = restart the pod.
+mux.HandleFunc(&quot;/healthz/live&quot;, func(w http.ResponseWriter, r *http.Request) {
+    w.WriteHeader(http.StatusOK)
+    w.Write([]byte(`{&quot;status&quot;:&quot;ok&quot;}`))
+})
+
+// Readiness: checks dependencies. Fail here = remove from load balancer.
+mux.HandleFunc(&quot;/healthz/ready&quot;, func(w http.ResponseWriter, r *http.Request) {
+    if err := db.PingContext(r.Context()); err != nil {
+        http.Error(w, `{&quot;status&quot;:&quot;not ready&quot;,&quot;error&quot;:&quot;db unreachable&quot;}`, http.StatusServiceUnavailable)
+        return
+    }
+    w.WriteHeader(http.StatusOK)
+    w.Write([]byte(`{&quot;status&quot;:&quot;ok&quot;}`))
+})</code></pre>
+<p>The key insight: <strong>never</strong> check external dependencies
+in the liveness probe. If your database is down, you don’t want
+Kubernetes restarting perfectly healthy pods in a loop.</p>
+<h2 id="context-propagation-for-timeout-budgets">5. Context Propagation
+for Timeout Budgets</h2>
+<p>Every external call should respect a deadline. Propagate context from
+the incoming request all the way down.</p>
+<pre class="go"><code>func (s *OrderService) PlaceOrder(ctx context.Context, order Order) error {
+    // Downstream call inherits the caller&#39;s deadline
+    if err := s.inventoryClient.Reserve(ctx, order.Items); err != nil {
+        return fmt.Errorf(&quot;inventory reservation failed: %w&quot;, err)
+    }
+    if err := s.paymentClient.Charge(ctx, order.Payment); err != nil {
+        return fmt.Errorf(&quot;payment failed: %w&quot;, err)
+    }
+    return s.repo.Save(ctx, order)
+}</code></pre>
+<p>Never use <code>context.Background()</code> inside a handler — always
+thread the request context through.</p>
+<h2 id="putting-it-all-together">Putting It All Together</h2>
+<p>These patterns aren’t mutually exclusive; they’re layers:</p>
+<ol type="1">
+<li><strong>Retry</strong> handles transient errors (brief network
+blip)</li>
+<li><strong>Circuit breaker</strong> handles sustained failures
+(dependency is down)</li>
+<li><strong>Timeouts via context</strong> prevent indefinite
+waiting</li>
+<li><strong>Graceful shutdown</strong> ensures you don’t drop work at
+deployment time</li>
+<li><strong>Health checks</strong> let your orchestrator route traffic
+intelligently</li>
+</ol>
+<p>Start simple — add complexity only when you’ve measured the need. A
+retry loop and a context deadline take you surprisingly far in most
+services.</p>
+<hr />
+<p><em>Have questions or a pattern I missed? Feel free to reach out via
+<a
+href="https://www.linkedin.com/in/claudiunicola/">LinkedIn</a>.</em></p>
+
+    <a href="https://claudiunicola.xyz/posts/" class="back-link">&larr; Back to all posts</a>
+  </article>
+  <footer>&copy; 2026 Claudiu Nicola. All rights reserved.</footer>
+</body>
+</html>

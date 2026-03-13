@@ -724,3 +724,12 @@ footer {
   a { color: #000; }
   pre { border: 1px solid #ccc; }
 }
+
+/* Post meta separators and reading time (individual post pages) */
+.post-meta .meta-sep {
+  color: #ccc;
+}
+
+.post-meta .reading-time {
+  color: #bbb;
+}

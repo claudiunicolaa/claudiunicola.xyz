@@ -4,10 +4,23 @@
         <description><![CDATA[Articles on backend engineering, Go, cloud-native architecture, microservices, and software craftsmanship by Claudiu Nicola.]]></description>
         <link>https://claudiunicola.xyz</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Fri, 13 Mar 2026 13:35:25 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 13 Mar 2026 13:39:24 GMT</lastBuildDate>
         <atom:link href="https://claudiunicola.xyz/posts/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 05 Jan 2024 00:00:00 GMT</pubDate>
+        <pubDate>Mon, 10 Mar 2025 00:00:00 GMT</pubDate>
         <language><![CDATA[en]]></language>
+        <item>
+            <title><![CDATA[Designing Resilient Microservices in Go: Patterns That Work in Production]]></title>
+            <description><![CDATA[A deep dive into practical resilience patterns for Go microservices — circuit breakers, retries with backoff, graceful shutdown, and health checks — based on real production experience.]]></description>
+            <link>https://claudiunicola.xyz/posts/designing-resilient-microservices-in-go/</link>
+            <guid isPermaLink="true">https://claudiunicola.xyz/posts/designing-resilient-microservices-in-go/</guid>
+            <category><![CDATA[golang]]></category>
+            <category><![CDATA[microservices]]></category>
+            <category><![CDATA[cloud-native]]></category>
+            <category><![CDATA[backend]]></category>
+            <category><![CDATA[software-architecture]]></category>
+            <dc:creator><![CDATA[Claudiu Nicola]]></dc:creator>
+            <pubDate>Mon, 10 Mar 2025 00:00:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[Using Private Go Modules with golangci-lint in GitHub Actions]]></title>
             <description><![CDATA[A practical guide to configuring GitHub Actions for Go projects that use private modules alongside golangci-lint.]]></description>

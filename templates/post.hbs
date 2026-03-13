@@ -70,13 +70,12 @@
     </div>
   </header>
   <article>
-    <header class="post-header">
-      <h1>{{title}}</h1>
-      <div class="post-meta">
-        <time datetime="{{isoDate date}}">{{formatDate date}}</time>
-        {{#if tags}}<span class="tags"> &middot; {{#each tags}}<a href="{{../baseUrl}}/posts/tags/{{tagSlugHelper this}}/"><span>{{this}}</span></a> {{/each}}</span>{{/if}}
-      </div>
-    </header>
+    <h1>{{title}}</h1>
+    <div class="post-meta">
+      <time datetime="{{isoDate date}}">{{formatDate date}}</time>
+      {{#if readingTime}}<span class="meta-sep">&middot;</span><span class="reading-time">{{readingTime}} min read</span>{{/if}}
+      {{#if tags}}<span class="tags">&middot; {{#each tags}}<a href="{{../baseUrl}}/posts/tags/{{tagSlugHelper this}}/"><span>{{this}}</span></a> {{/each}}</span>{{/if}}
+    </div>
     {{{content}}}
     <a href="{{baseUrl}}/posts/" class="back-link">&larr; Back to all posts</a>
   </article>

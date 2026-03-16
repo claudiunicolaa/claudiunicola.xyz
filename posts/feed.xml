@@ -4,7 +4,7 @@
         <description><![CDATA[Articles on backend engineering, Go, cloud-native architecture, microservices, and software craftsmanship by Claudiu Nicola.]]></description>
         <link>https://claudiunicola.xyz</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Fri, 13 Mar 2026 13:40:16 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 16 Mar 2026 14:02:34 GMT</lastBuildDate>
         <atom:link href="https://claudiunicola.xyz/posts/feed.xml" rel="self" type="application/rss+xml"/>
         <pubDate>Mon, 10 Mar 2025 00:00:00 GMT</pubDate>
         <language><![CDATA[en]]></language>
@@ -32,6 +32,17 @@
             <category><![CDATA[devops]]></category>
             <dc:creator><![CDATA[Claudiu Nicola]]></dc:creator>
             <pubDate>Fri, 05 Jan 2024 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[selfTaught && findMentor]]></title>
+            <description><![CDATA[Why every self-taught developer should find a mentor — and a 7-checkpoint framework for staying on track.]]></description>
+            <link>https://claudiunicola.xyz/posts/selftaught-findmentor/</link>
+            <guid isPermaLink="true">https://claudiunicola.xyz/posts/selftaught-findmentor/</guid>
+            <category><![CDATA[career]]></category>
+            <category><![CDATA[learning]]></category>
+            <category><![CDATA[mentorship]]></category>
+            <dc:creator><![CDATA[Claudiu Nicola]]></dc:creator>
+            <pubDate>Mon, 11 Dec 2017 00:00:00 GMT</pubDate>
         </item>
     </channel>
 </rss>

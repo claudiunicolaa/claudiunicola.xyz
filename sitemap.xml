@@ -19,7 +19,16 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://claudiunicola.xyz/posts/selftaught-findmentor/</loc>
+    <lastmod>2017-12-11</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://claudiunicola.xyz/posts/tags/backend/</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://claudiunicola.xyz/posts/tags/career/</loc>
     <priority>0.5</priority>
   </url>
   <url>
@@ -40,6 +49,14 @@
   </url>
   <url>
     <loc>https://claudiunicola.xyz/posts/tags/golang/</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://claudiunicola.xyz/posts/tags/learning/</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://claudiunicola.xyz/posts/tags/mentorship/</loc>
     <priority>0.5</priority>
   </url>
   <url>

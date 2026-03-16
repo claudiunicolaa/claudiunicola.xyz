@@ -1,0 +1,23 @@
+{
+  "skill_name": "sync-blog",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "/sync-blog https://dev.to/antweiss/how-to-implement-ai-with-cloud-native-applications-without-vendor-lock-in-31gh",
+      "expected_output": "A _posts/YYYY-MM-DD-slug.md file with correct frontmatter (title, date, summary, tags, keywords) and clean markdown body. Tags should include relevant tech tags like cloud-native, ai, etc.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "/sync-blog https://medium.com/@michal.bock/go-error-handling-best-practices-b73eb8e1fd81",
+      "expected_output": "A _posts/YYYY-MM-DD-slug.md file. Title extracted correctly, date from article (or today if not found), body converted to clean markdown without Medium cruft, tags include golang.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I want to import this article into my blog: https://itnext.io/kubernetes-explained-deep-enough-storage-eb3a71a00e62",
+      "expected_output": "Skill triggers even though the user didn't use /sync-blog explicitly. Creates _posts/YYYY-MM-DD-kubernetes-explained-deep-enough-storage.md with proper frontmatter and clean content.",
+      "files": []
+    }
+  ]
+}

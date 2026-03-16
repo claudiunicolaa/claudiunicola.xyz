@@ -13,7 +13,7 @@ keywords:
   - private Go modules CI
   - golang CI/CD pipeline
   - GitHub Actions Go setup
-og_image: ""
+og_image: "https://claudiunicola.xyz/profile.jpg"
 ---
 
 If you're working with **private Go modules** and using `golangci-lint` in your CI pipeline, you've probably hit the authentication wall. Here's how to solve it cleanly in GitHub Actions.

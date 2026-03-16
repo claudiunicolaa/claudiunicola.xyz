@@ -162,6 +162,19 @@ Handlebars.registerHelper("tagSlugHelper", (tag) =>
 Handlebars.registerHelper("joinTags", (tags) =>
   Array.isArray(tags) ? tags.map((t) => t.name || t).join(", ") : ""
 );
+/**
+ * JSON-safe escaping for values embedded inside JSON string literals.
+ * Returns the raw escaped string content WITHOUT surrounding quotes so it
+ * can be placed between existing "..." delimiters in the template.
+ * Uses Handlebars.SafeString to prevent double-HTML-encoding.
+ */
+Handlebars.registerHelper("jsonEscape", (value) => {
+  if (value === null || value === undefined) return new Handlebars.SafeString("");
+  // JSON.stringify produces a quoted string; strip surrounding quotes to get
+  // just the safely-escaped content.
+  const escaped = JSON.stringify(String(value)).slice(1, -1);
+  return new Handlebars.SafeString(escaped);
+});
 
 // ---------------------------------------------------------------------------
 // Templates (loaded from templates/ directory for maintainability)
@@ -221,16 +234,17 @@ const indexTemplate = Handlebars.compile(`<!DOCTYPE html>
   <link rel="stylesheet" href="{{baseUrl}}/posts/style.css">
 </head>
 <body>
+  <a href="#main-content" class="skip-to-content">Skip to content</a>
   <header class="site-header">
     <div class="site-header-inner">
       <a href="{{baseUrl}}/" class="brand">Claudiu Nicola</a>
-      <nav>
-        <a href="{{baseUrl}}/">Resume</a>
+      <nav aria-label="Site navigation">
+        <a href="{{baseUrl}}/">Home</a>
         <a href="{{baseUrl}}/posts/" aria-current="page">Blog</a>
       </nav>
     </div>
   </header>
-  <div class="container">
+  <main id="main-content" class="container">
     <div class="blog-intro">
       <h1>Blog</h1>
       {{#if posts.length}}<span class="post-count-badge">{{posts.length}} article{{#unless singlePost}}s{{/unless}}</span>{{/if}}
@@ -284,7 +298,7 @@ const indexTemplate = Handlebars.compile(`<!DOCTYPE html>
       {{/each}}
     </section>
     {{/if}}
-  </div>
+  </main>
   <footer>&copy; {{year}} Claudiu Nicola. All rights reserved.</footer>
 </body>
 </html>`);
@@ -296,6 +310,146 @@ function makeTagSlug(tag) {
     .replace(/[^a-z0-9-]/g, "-")
     .replace(/-+/g, "-")
     .replace(/^-|-$/g, "");
+}
+
+// ---------------------------------------------------------------------------
+// Metadata collection
+// ---------------------------------------------------------------------------
+
+/**
+ * Collect and parse metadata for all posts in POSTS_DIR.
+ *
+ * Reads every *.md file, parses YAML frontmatter, applies safe defaults for
+ * missing fields, and returns an array sorted by date descending (newest first).
+ *
+ * @returns {Array<{
+ *   slug: string,
+ *   title: string,
+ *   date: Date,
+ *   summary: string,
+ *   tags: string[],
+ *   keywords: string,
+ *   og_image: string,
+ *   readingTime: number,
+ *   body: string,
+ *   canonicalUrl: string
+ * }>} Posts sorted newest-first by the `date` frontmatter field.
+ */
+function collectPostMetadata() {
+  if (!fs.existsSync(POSTS_DIR)) {
+    return [];
+  }
+
+  const mdFiles = fs
+    .readdirSync(POSTS_DIR)
+    .filter((f) => f.endsWith(".md"));
+
+  console.log(`build-blog: found ${mdFiles.length} post(s) in _posts/`);
+
+  const posts = [];
+
+  for (const file of mdFiles) {
+    const raw = fs.readFileSync(path.join(POSTS_DIR, file), "utf-8");
+    const { meta, body } = parseFrontmatter(raw);
+
+    // Derive values with safe defaults for all required fields
+    const slug = slugFromFilename(file);
+    const title = meta.title || slug.replace(/-/g, " ");
+
+    // Parse date from frontmatter; fall back to epoch so undated posts sort last
+    let date;
+    if (meta.date) {
+      date = new Date(meta.date);
+      if (isNaN(date)) {
+        console.warn(`  ⚠ post "${file}": invalid date "${meta.date}" — using epoch`);
+        date = new Date(0);
+      }
+    } else {
+      console.warn(`  ⚠ post "${file}": missing date in frontmatter — using epoch`);
+      date = new Date(0);
+    }
+
+    const summary = meta.summary || "";
+    const tags = Array.isArray(meta.tags)
+      ? meta.tags.map((t) => String(t).trim()).filter(Boolean)
+      : [];
+    // Build keywords: prefer explicit frontmatter keywords, fall back to tags
+    // This ensures every post with tags gets meaningful meta keywords for SEO
+    const explicitKeywords = Array.isArray(meta.keywords)
+      ? meta.keywords.join(", ")
+      : typeof meta.keywords === "string"
+        ? meta.keywords
+        : "";
+    // Derive tag-based keywords from the tags array (use original casing)
+    const tagKeywords = Array.isArray(meta.tags)
+      ? meta.tags.map((t) => String(t).trim()).filter(Boolean).join(", ")
+      : "";
+    const keywords = explicitKeywords || tagKeywords;
+    const og_image = meta.og_image || "";
+    const readingTime = estimateReadingTime(body);
+    const canonicalUrl = `${BASE_URL}/posts/${slug}/`;
+
+    posts.push({ slug, title, date, summary, tags, keywords, og_image, readingTime, body, canonicalUrl });
+  }
+
+  // Sort by date descending (newest first), then by title for stable ties
+  posts.sort((a, b) => {
+    const diff = b.date - a.date;
+    if (diff !== 0) return diff;
+    return a.title.localeCompare(b.title);
+  });
+
+  return posts;
+}
+
+// ---------------------------------------------------------------------------
+// Blog index generator — reads manifest, renders reverse-chronological listing
+// ---------------------------------------------------------------------------
+
+/**
+ * Generate posts/index.html from a manifest object.
+ *
+ * The manifest is written to disk before this function is called so that the
+ * blog index is always derived from the same machine-readable data structure
+ * that external tools can consume.  Dates are stored as ISO strings in the
+ * manifest and are re-parsed here back to Date objects so Handlebars helpers
+ * (formatDate, isoDate) work correctly.
+ *
+ * Posts in the manifest are already sorted newest-first by collectPostMetadata();
+ * this function preserves that order, giving a reverse-chronological listing.
+ *
+ * @param {{ baseUrl: string, posts: Array<{slug, title, date, summary, tags, keywords, og_image, readingTime, canonicalUrl}> }} manifest
+ */
+function generateBlogIndex(manifest) {
+  // Re-parse ISO date strings to Date objects for Handlebars helpers
+  const postsForTemplate = manifest.posts.map((p) => ({
+    ...p,
+    // manifest stores date as "YYYY-MM-DD"; parse back to Date for helpers
+    date: p.date ? new Date(p.date) : new Date(0),
+  }));
+
+  // Rebuild tag aggregation from manifest post data
+  const tagMap = buildTagMap(postsForTemplate);
+  const allTags = [...tagMap.entries()].map(([name, tagPosts]) => ({
+    name,
+    slug: makeTagSlug(name),
+    count: tagPosts.length,
+    posts: tagPosts, // included for tags-aggregation section on index page
+  }));
+
+  const indexHtml = indexTemplate({
+    posts: postsForTemplate,
+    allTags,
+    singlePost: postsForTemplate.length === 1,
+    baseUrl: manifest.baseUrl,
+    siteTitle: SITE_TITLE,
+    siteDescription: SITE_DESCRIPTION,
+    author: AUTHOR,
+    year: new Date().getFullYear(),
+  });
+
+  fs.writeFileSync(path.join(OUT_DIR, "index.html"), indexHtml, "utf-8");
+  console.log("  → posts/index.html");
 }
 
 // ---------------------------------------------------------------------------
@@ -314,42 +468,20 @@ function main() {
   // Ensure output dir
   fs.mkdirSync(OUT_DIR, { recursive: true });
 
-  // Collect markdown files
-  const mdFiles = fs
-    .readdirSync(POSTS_DIR)
-    .filter((f) => f.endsWith(".md"))
-    .sort()
-    .reverse(); // newest first by filename date prefix
-
-  console.log(`build-blog: found ${mdFiles.length} post(s) in _posts/`);
+  // Collect all post metadata sorted by date (newest first)
+  const allPosts = collectPostMetadata();
 
   const posts = [];
 
-  for (const file of mdFiles) {
-    const raw = fs.readFileSync(path.join(POSTS_DIR, file), "utf-8");
-    const { meta, body } = parseFrontmatter(raw);
-
-    // Derive values with safe defaults
-    const slug = slugFromFilename(file);
-    const title = meta.title || slug.replace(/-/g, " ");
-    const date = meta.date ? new Date(meta.date) : new Date();
-    const summary = meta.summary || "";
-    const tags = Array.isArray(meta.tags) ? meta.tags : [];
-    const keywords = Array.isArray(meta.keywords)
-      ? meta.keywords.join(", ")
-      : typeof meta.keywords === "string"
-        ? meta.keywords
-        : "";
-    const og_image = meta.og_image || "";
-    const readingTime = estimateReadingTime(body);
+  for (const postMeta of allPosts) {
+    const { slug, title, date, summary, tags, keywords, og_image, readingTime, body, canonicalUrl } = postMeta;
 
     // Convert markdown body to HTML via pandoc
     const htmlContent = markdownToHtml(body);
 
-    const canonicalUrl = `${BASE_URL}/posts/${slug}/`;
-
     // Render post page
     const postHtml = postTemplate({
+      slug,
       title,
       date,
       summary,
@@ -410,27 +542,34 @@ function main() {
     tagPageUrls.push({ loc: tagCanonicalUrl, priority: "0.5" });
   }
 
-  // ---- Blog index page ----
-  // Build allTags array from tagMap for the index template
-  const allTags = [...tagMap.entries()].map(([name, tagPosts]) => ({
-    name,
-    slug: makeTagSlug(name),
-    count: tagPosts.length,
-    posts: tagPosts, // included for tags aggregation section on index page
-  }));
-
-  const indexHtml = indexTemplate({
-    posts,
-    allTags,
-    singlePost: posts.length === 1,
+  // ---- JSON manifest (written before index so index generation reads from it) ----
+  // Machine-readable manifest for downstream tools (search, analytics, etc.)
+  // Maps every slug to its frontmatter metadata so values are queryable without
+  // parsing HTML.  Written to posts/manifest.json.
+  const manifest = {
+    generated: new Date().toISOString(),
     baseUrl: BASE_URL,
-    siteTitle: SITE_TITLE,
-    siteDescription: SITE_DESCRIPTION,
-    author: AUTHOR,
-    year: new Date().getFullYear(),
-  });
-  fs.writeFileSync(path.join(OUT_DIR, "index.html"), indexHtml, "utf-8");
-  console.log("  → posts/index.html");
+    posts: posts.map((p) => ({
+      slug: p.slug,
+      title: p.title,
+      date: fmtDate(p.date),
+      summary: p.summary,
+      tags: p.tags,
+      keywords: p.keywords,
+      og_image: p.og_image,
+      readingTime: p.readingTime,
+      canonicalUrl: p.canonicalUrl,
+    })),
+  };
+  fs.writeFileSync(
+    path.join(OUT_DIR, "manifest.json"),
+    JSON.stringify(manifest, null, 2),
+    "utf-8"
+  );
+  console.log("  → posts/manifest.json");
+
+  // ---- Blog index page (reads manifest) ----
+  generateBlogIndex(manifest);
 
   // ---- RSS Feed ----
   const feed = new RSS({
@@ -482,6 +621,15 @@ ${sitemapUrls
 
   fs.writeFileSync(path.join(__dirname, "sitemap.xml"), sitemapXml, "utf-8");
   console.log("  → sitemap.xml");
+
+  // ---- robots.txt ----
+  const robotsTxt = `User-agent: *
+Allow: /
+
+Sitemap: ${BASE_URL}/sitemap.xml
+`;
+  fs.writeFileSync(path.join(__dirname, "robots.txt"), robotsTxt, "utf-8");
+  console.log("  → robots.txt");
 
   console.log(`build-blog: done — ${posts.length} post(s) generated`);
 }

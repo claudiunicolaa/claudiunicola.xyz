@@ -19,7 +19,15 @@
       "Bash(node build-blog.js 2>&1)",
       "Bash(npm test:*)",
       "Bash(npm run:*)",
-      "mcp__plugin_ouroboros_ouroboros__ouroboros_start_evolve_step"
+      "mcp__plugin_ouroboros_ouroboros__ouroboros_start_evolve_step",
+      "mcp__plugin_ouroboros_ouroboros__ouroboros_job_status",
+      "mcp__plugin_ouroboros_ouroboros__ouroboros_cancel_job",
+      "mcp__plugin_ouroboros_ouroboros__ouroboros_lateral_think",
+      "Bash(tree:*)",
+      "Read(//Users/claudiunicolaa/.claude/**)",
+      "Bash(cat:*)",
+      "WebFetch(domain:medium.com)",
+      "WebFetch(domain:webcache.googleusercontent.com)"
     ]
   }
 }

@@ -1,0 +1,54 @@
+{
+  "generated": "2026-03-16T14:02:33.980Z",
+  "baseUrl": "https://claudiunicola.xyz",
+  "posts": [
+    {
+      "slug": "designing-resilient-microservices-in-go",
+      "title": "Designing Resilient Microservices in Go: Patterns That Work in Production",
+      "date": "2025-03-10",
+      "summary": "A deep dive into practical resilience patterns for Go microservices — circuit breakers, retries with backoff, graceful shutdown, and health checks — based on real production experience.",
+      "tags": [
+        "golang",
+        "microservices",
+        "cloud-native",
+        "backend",
+        "software-architecture"
+      ],
+      "keywords": "Go microservices resilience patterns, circuit breaker Go, graceful shutdown Golang, retry with exponential backoff Go, health check microservices Go, cloud-native backend engineering",
+      "og_image": "https://claudiunicola.xyz/profile.jpg",
+      "readingTime": 4,
+      "canonicalUrl": "https://claudiunicola.xyz/posts/designing-resilient-microservices-in-go/"
+    },
+    {
+      "slug": "using-private-go-modules-with-golangci-lint",
+      "title": "Using Private Go Modules with golangci-lint in GitHub Actions",
+      "date": "2024-01-05",
+      "summary": "A practical guide to configuring GitHub Actions for Go projects that use private modules alongside golangci-lint.",
+      "tags": [
+        "golang",
+        "github-actions",
+        "ci-cd",
+        "devops"
+      ],
+      "keywords": "golangci-lint private modules, Go GitHub Actions, private Go modules CI, golang CI/CD pipeline, GitHub Actions Go setup",
+      "og_image": "https://claudiunicola.xyz/profile.jpg",
+      "readingTime": 1,
+      "canonicalUrl": "https://claudiunicola.xyz/posts/using-private-go-modules-with-golangci-lint/"
+    },
+    {
+      "slug": "selftaught-findmentor",
+      "title": "selfTaught && findMentor",
+      "date": "2017-12-11",
+      "summary": "Why every self-taught developer should find a mentor — and a 7-checkpoint framework for staying on track.",
+      "tags": [
+        "career",
+        "learning",
+        "mentorship"
+      ],
+      "keywords": "self-taught developer, find a mentor, learning to code, developer career advice, self-learning programming",
+      "og_image": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*hufSBiGuhPRB0p6yo0hWLQ.jpeg",
+      "readingTime": 9,
+      "canonicalUrl": "https://claudiunicola.xyz/posts/selftaught-findmentor/"
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+---
+import { getCollection } from 'astro:content';
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import { formatDateHuman, formatDateISO } from '../../utils/dates';
+import { estimateReadingTime } from '../../utils/reading-time';
+import { tagSlug, buildTagMap } from '../../utils/tags';
+
+const allPosts = (await getCollection('posts')).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+const allTags = buildTagMap(allPosts);
+
+const siteTitle = 'Claudiu Nicola — Software Engineering Blog';
+const siteDescription =
+  'Articles on backend engineering, Go, cloud-native architecture, microservices, and software craftsmanship by Claudiu Nicola.';
+---
+
+<BlogLayout title="Blog — Claudiu Nicola" description={siteDescription} currentPage="blog">
+  <Fragment slot="head">
+    <meta name="author" content="Claudiu Nicola" />
+    <meta name="keywords" content="software engineering blog, backend development, Go, Golang, cloud-native, microservices, DevOps" />
+    <link rel="canonical" href="https://claudiunicola.xyz/posts/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Blog — Claudiu Nicola" />
+    <meta property="og:description" content={siteDescription} />
+    <meta property="og:url" content="https://claudiunicola.xyz/posts/" />
+    <meta property="og:site_name" content="Claudiu Nicola" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Blog — Claudiu Nicola" />
+    <meta name="twitter:description" content={siteDescription} />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Blog',
+      name: siteTitle,
+      description: siteDescription,
+      url: 'https://claudiunicola.xyz/posts/',
+      author: {
+        '@type': 'Person',
+        name: 'Claudiu Nicola',
+        url: 'https://claudiunicola.xyz',
+      },
+      ...(allTags.length > 0 ? { keywords: allTags.map((t) => t.name).join(', ') } : {}),
+    })} />
+
+    <link rel="alternate" type="application/rss+xml" title={siteTitle} href="https://claudiunicola.xyz/posts/feed.xml" />
+  </Fragment>
+
+  <main id="main-content" class="container">
+    <div class="blog-intro">
+      <h1>Blog</h1>
+      {allPosts.length > 0 && (
+        <span class="post-count-badge">
+          {allPosts.length} article{allPosts.length !== 1 ? 's' : ''}
+        </span>
+      )}
+    </div>
+    <p class="lead">{siteDescription}</p>
+
+    {allPosts.length > 0 ? (
+      <ul class="post-list">
+        {allPosts.map((post) => {
+          const readingTime = estimateReadingTime(post.body || '');
+          return (
+            <li>
+              <div class="meta">
+                <time datetime={formatDateISO(post.data.date)}>
+                  {formatDateHuman(post.data.date)}
+                </time>
+                {readingTime && (
+                  <>
+                    <span class="meta-sep">&middot;</span>
+                    <span class="reading-time">{readingTime} min read</span>
+                  </>
+                )}
+                {post.data.tags.length > 0 && (
+                  <>
+                    <span class="meta-sep">&middot;</span>
+                    <span class="tags">
+                      {post.data.tags.map((tag) => (
+                        <a href={`/posts/tags/${tagSlug(tag)}/`}>
+                          <span>{tag}</span>
+                        </a>
+                      ))}
+                    </span>
+                  </>
+                )}
+              </div>
+              <h2>
+                <a href={`/posts/${post.id}/`}>{post.data.title}</a>
+              </h2>
+              {post.data.summary && <p class="summary">{post.data.summary}</p>}
+            </li>
+          );
+        })}
+      </ul>
+    ) : (
+      <p class="empty">No posts yet. Check back soon!</p>
+    )}
+
+    <a href="/posts/feed.xml" class="rss-link">&#128225; RSS Feed</a>
+
+    {allTags.length > 0 && (
+      <details class="tags-aggregation" aria-label="Posts grouped by tag">
+        <summary><h2>Browse by Tag</h2></summary>
+        {allTags.map((tagInfo) => (
+          <div class="tag-group">
+            <h3 class="tag-group-title">
+              <a href={`/posts/tags/${tagInfo.slug}/`} class="tag-group-link">
+                {tagInfo.name}
+              </a>
+              <span class="tag-count">({tagInfo.count})</span>
+            </h3>
+            <ul class="tag-group-posts">
+              {tagInfo.posts.map((post) => (
+                <li>
+                  <a href={`/posts/${post.slug}/`}>{post.title}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </details>
+    )}
+  </main>
+</BlogLayout>

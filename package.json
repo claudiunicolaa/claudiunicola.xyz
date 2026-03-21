@@ -1,14 +1,16 @@
 {
+  "name": "claudiunicola-xyz",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "generate-html": "resume export index.html --theme classy",
-    "build": "node build-blog.js",
-    "lint": "node --check build-blog.js",
-    "test": "node -e \"const fs=require('fs'); ['posts/index.html','posts/feed.xml','sitemap.xml','robots.txt'].forEach(f=>{if(!fs.existsSync(f))throw new Error('Missing: '+f)}); console.log('All required files present')\""
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
   "dependencies": {
-    "handlebars": "^4.7.8",
-    "js-yaml": "^4.1.0",
-    "jsonresume-theme-classy": "^1.0.9",
-    "rss": "^1.2.2"
+    "astro": "^5.7.10",
+    "@astrojs/sitemap": "^3.3.1",
+    "@astrojs/rss": "^4.0.11",
+    "unist-util-visit": "^5.0.0"
   }
 }

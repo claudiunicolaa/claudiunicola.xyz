@@ -27,7 +27,12 @@
       "Read(//Users/claudiunicolaa/.claude/**)",
       "Bash(cat:*)",
       "WebFetch(domain:medium.com)",
-      "WebFetch(domain:webcache.googleusercontent.com)"
+      "WebFetch(domain:webcache.googleusercontent.com)",
+      "WebSearch",
+      "WebFetch(domain:strapi.io)",
+      "WebFetch(domain:github.com)",
+      "Bash(npx astro:*)",
+      "Bash(python3:*)"
     ]
   }
 }

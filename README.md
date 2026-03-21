@@ -1,25 +1,30 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b77be5a1-d3d5-4cc9-b65d-7535c4a7bd80/deploy-status)](https://app.netlify.com/sites/affectionate-knuth-e1e325/deploys)
-
 # claudiunicola.xyz
 
-Personal website created using https://jsonresume.org/. It uses `Classy`theme.
+Personal website and blog, built with [Astro](https://astro.build/).
 
 ### Prerequisites
 ```
-node
+node >= 18
 npm
 ```
 
-### Steps:
-- install resume-cli tool (https://jsonresume.org/getting-started/)
-- install the theme `npm install jsonresume-theme-classy`
-- create JSON schema (http://registry.jsonresume.org/) and saved it locally as `resume.json`
-- run `resume export index.html --theme classy`
+### Development
+```
+npm install
+npm run dev
+```
 
+### Build
+```
+npm run build
+npm run preview   # preview locally
+```
 
 ### Deploy
-Run `bash generate.sh`
+Push to `master` — GitHub Actions builds and deploys to GitHub Pages automatically.
 
-### Export as PDF
+### Resume
+Edit `resume.json` — the homepage renders it directly (no external tools needed).
 
-Run `bash export_to_pdf.sh`
+### Blog
+Add markdown files to `src/content/posts/`. Frontmatter: `title`, `date`, `summary`, `tags`.
